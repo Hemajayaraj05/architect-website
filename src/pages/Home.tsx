@@ -11,6 +11,7 @@ function Home() {
 
                     
                     <div className="md:w-1/2 text-center md:text-left">
+                    <p className="mb-6 text-gray-900">Where imagination meets structure, dreams become spaces❤️</p>
                         <h1 className="text-5xl font-bold mb-6 text-gray-900">
                             Designing Spaces, <br /> Building Dreams
                         </h1>
