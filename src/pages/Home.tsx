@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar";
 import heroImage from "../assets/download__1_-removebg-preview.png";
+// import ProjectMilestones from "../components/ProjectMileStone";
 
 function Home() {
     return (
@@ -25,6 +26,10 @@ function Home() {
 
                    
                     <div className="md:w-1/2 mt-10 md:mt-0 flex justify-center md:justify-end px-4 md:px-0">
+                    {/* <div className="flex h-100 max-w-full p-20 pl-100">
+                              <ProjectMilestones/>
+                    </div>
+                     */}
                         <img
                             src={heroImage}
                             alt="Architect working"
@@ -42,7 +47,7 @@ function Home() {
                         preserveAspectRatio="none"
                     >
                         <path
-                            fill="#f3e8ff" // light purple color for the curve
+                            fill="#f3e8ff" 
                             d="M0,320 
                                Q1000,0 2000,320 
                                L2000,320 
