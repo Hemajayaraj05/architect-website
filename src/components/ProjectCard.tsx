@@ -12,7 +12,7 @@ const ProjectCard = ({
   image,
 }: ProjectCardProps) => {
   return (
-    <div className="w-70 shrink-0 rounded-xl bg-white shadow-lg overflow-hidden hover:shadow-2xl transition">
+    <div className="w-70 shrink-0 rounded-xl bg-white  overflow-hidden hover:shadow-xl transition">
       <img
         src={image}
         alt={title}

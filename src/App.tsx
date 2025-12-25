@@ -1,16 +1,24 @@
+
 import About from "./pages/About";
+import ContactUs from "./pages/Contact";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
+import Services from "./pages/Services";
 
+function App() {
+  return (
+    <>
+      
 
-function App(){
-  return <>
-
-        <Home/>
-        <About/>
-        <Projects/>
-  
-  </>
+      <main className="relative z-10">
+        <Home />
+        <About />
+        <Projects />
+        <Services />
+        <ContactUs />
+      </main>
+    </>
+  );
 }
 
 export default App;
