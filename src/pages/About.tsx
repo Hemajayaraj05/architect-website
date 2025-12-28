@@ -1,25 +1,25 @@
 
-import heroImage from "../assets/Gemini_Generated_Image_7uj5kq7uj5kq7uj5.png";
+import heroImage from "../assets/about img.png";
 function About() {
   return (
     <div className="bg-purple-100">
-   <h2 className="text-4xl font-bold text-purple-900 text-center p-6 ">
-          About Us
-        </h2>
+      <h2 className="text-4xl font-bold text-purple-900 text-center pt-6 ">
+        About Us
+      </h2>
 
-      <section className="py-10 px-6 md:px-20">
+      <section className="py-5 px-6 md:px-20">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-14 items-center">
 
-          
+
           <div>
             <img
               src={heroImage}
               alt="Architect studio"
-              className="rounded-xl border-purple-500 object-cover w-full h-120"
+              className="rounded-xl border-purple-500 object-cover w-full h-100"
             />
           </div>
 
-      
+
           <div className="flex flex-col">
             {/* <p className="text-xl font-bold uppercase tracking-widest text-purple-600 mb-3 text-center">
               About Us
