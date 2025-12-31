@@ -1,4 +1,11 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap');
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Rubik', sans-serif;
+}
 @keyframes scroll {
   0% {
     transform: translateX(0);
@@ -8,15 +15,14 @@
   }
 }
 
-.scroll-track {
-  display: flex;
-  gap: 1.5rem;
-  width: max-content;
+.animate-scroll {
   animation: scroll 25s linear infinite;
+  width: max-content;
 }
 
-.scroll-track:hover {
+
+
+
+.group:hover .animate-scroll {
   animation-play-state: paused;
 }
-
-

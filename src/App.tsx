@@ -10,7 +10,7 @@ function App() {
     <>
       
 
-      <main className="relative z-10">
+      <main className="relative z-10 scroll-smooth">
         <Home />
         <About />
         <Projects />
