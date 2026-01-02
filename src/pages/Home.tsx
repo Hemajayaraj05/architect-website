@@ -3,26 +3,26 @@ import heroImage from "../assets/download__1_-removebg-preview.png";
 import { motion } from "framer-motion";
 
 function Home() {
-    // Animation for left content
+    
     const leftContentVariants = {
         hidden: { opacity: 0, x: -50 },
         visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
     };
 
-    // Animation for right image
+   
     const rightImageVariants = {
         hidden: { opacity: 0, x: 50 },
         visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
     };
 
     return (
-        <div id="home" className="bg-white dark:bg-gray-900 transition-colors duration-500 ">
+        <div id="overview" className="bg-white dark:bg-gray-900 transition-colors duration-500 ">
             <Navbar />
 
             <section className="relative bg-linear-to-r from-purple-200 to-purple-100 dark:from-gray-800 dark:to-gray-900 overflow-hidden px-5 md:px-20 pt-15">
                 <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center">
 
-                    {/* LEFT CONTENT */}
+                
                     <motion.div
                         className="md:w-1/2 text-center md:text-left"
                         initial="hidden"
@@ -41,14 +41,28 @@ function Home() {
                             Innovative Architectural Solutions for Modern Living
                         </p>
 
-                        <a href="#projects" className="inline-block">
-                            <button className="bg-purple-900 dark:bg-purple-700 text-white px-8 py-4 rounded-lg hover:bg-purple-800 dark:hover:bg-purple-600 transition">
-                                Explore Our Projects
-                            </button>
-                        </a>
+                       <a
+  href="#work"
+  className="
+    inline-flex items-center justify-center
+    bg-purple-700 dark:bg-purple-600
+    text-white
+    px-8 py-4
+    rounded-lg
+    font-medium
+    cursor-pointer
+    transition-all duration-300
+    hover:bg-purple-800 dark:hover:bg-purple-500
+    hover:shadow-lg
+    hover:scale-[1.03]
+  "
+>
+  Explore Our Projects
+</a>
+
                     </motion.div>
 
-                    {/* RIGHT IMAGE */}
+              
                     <motion.div
                         className="md:w-1/2 mt-10 md:mt-0 flex justify-center md:justify-end px-4 md:px-0"
                         initial="hidden"
@@ -63,7 +77,6 @@ function Home() {
                     </motion.div>
                 </div>
 
-                {/* CURVED SVG BOTTOM */}
                 <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-0">
                     <svg
                         className="relative block w-full h-40"

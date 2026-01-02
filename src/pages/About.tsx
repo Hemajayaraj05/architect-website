@@ -3,14 +3,14 @@ import heroImage from "../assets/about img.png";
 import { motion } from "framer-motion";
 
 function About() {
-  // Variants for each feature point
+  
   const featureVariants = {
     hidden: { opacity: 0, x: 50 },
     visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
   };
 
   return (
-    <div id="about" className="bg-purple-100 dark:bg-gray-900">
+    <div id="process" className="bg-purple-100 dark:bg-gray-900">
       <h2 className="text-4xl font-bold text-purple-900 dark:text-purple-400 text-center pt-6">
         About Us
       </h2>
@@ -21,7 +21,7 @@ function About() {
       <section className="py-5 px-6 md:px-20">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-14 items-center">
 
-          {/* Image */}
+         
           <div>
             <img
               src={heroImage}
@@ -30,7 +30,7 @@ function About() {
             />
           </div>
 
-          {/* Text content */}
+         
           <div className="flex flex-col">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6 leading-tight text-center">
               Crafting Spaces That Inspire Living
@@ -42,9 +42,9 @@ function About() {
               Every project is shaped by people, purpose, and place.
             </p>
 
-            {/* Features with scroll-triggered animation */}
+           
             <div className="space-y-5">
-              {/* First point */}
+           
               <motion.div
                 className="flex gap-4"
                 initial="hidden"
@@ -64,7 +64,7 @@ function About() {
                 </div>
               </motion.div>
 
-              {/* Second point */}
+          
               <motion.div
                 className="flex gap-4"
                 initial="hidden"
@@ -84,7 +84,7 @@ function About() {
                 </div>
               </motion.div>
 
-              {/* Third point */}
+          
               <motion.div
                 className="flex gap-4"
                 initial="hidden"

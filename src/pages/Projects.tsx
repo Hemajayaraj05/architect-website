@@ -27,8 +27,8 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-16 bg-purple-100 dark:bg-gray-900 transition-colors duration-500">
-      {/* Heading */}
+    <section id="work" className="py-16 bg-purple-100 dark:bg-gray-900 transition-colors duration-500">
+     
       <div className="max-w-7xl mx-auto px-6 mb-16">
         <h2 className="text-4xl font-bold text-purple-900  dark:text-purple-400 text-center">
           Our Projects
@@ -38,7 +38,6 @@ const Projects = () => {
         </p>
       </div>
 
-      {/* Glass Container */}
       <div
         className="
           group max-w-5xl mx-auto px-4 md:px-16 py-8 overflow-hidden
@@ -47,7 +46,7 @@ const Projects = () => {
           rounded-3xl shadow-xl
         "
       >
-        {/* Scroll Track */}
+       
         <div className="flex gap-8 animate-scroll w-max">
           {[...projects, ...projects].map((project, index) => (
             <ProjectCard key={index} {...project} />

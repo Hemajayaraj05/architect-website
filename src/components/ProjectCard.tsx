@@ -18,14 +18,14 @@ const ProjectCard = ({ title, description, location, image }: ProjectCardProps) 
         hover:z-50
       "
     >
-      {/* Image */}
+     
       <img
         src={image}
         alt={title}
         className="h-44 w-full object-cover"
       />
 
-      {/* Content */}
+      
       <div className="p-5">
         <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
           {title}

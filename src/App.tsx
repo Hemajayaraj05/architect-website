@@ -12,9 +12,9 @@ function App() {
 
       <main className="relative z-10 scroll-smooth">
         <Home />
-        <About />
         <Projects />
         <Services />
+        <About />
         <ContactUs />
       </main>
     </>

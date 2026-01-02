@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 
 function ContactUs() {
-  // Variants for center and side cards
+ 
   const centerVariant = {
     hidden: { opacity: 0, scale: 0.8 },
     visible: { opacity: 1, scale: 1, transition: { duration: 0.6 } },
@@ -13,7 +13,7 @@ function ContactUs() {
   });
 
   return (
-    <div id="contact" className="bg-purple-100 dark:bg-gray-900 pb-6">
+    <div id="connect" className="bg-purple-100 dark:bg-gray-900 pb-6 pt-12">
       <div className="max-w-4xl mx-auto px-6 py-2">
         <h1 className="text-3xl font-bold text-center text-purple-950 dark:text-purple-400 mb-3">
           Contact Us
@@ -24,7 +24,7 @@ function ContactUs() {
         </p>
 
         <div className="grid md:grid-cols-3 gap-8 text-center">
-          {/* Left card */}
+      
           <motion.div
             className="p-6 rounded-xl border border-white/30 bg-white/20 dark:bg-gray-800/40 backdrop-blur-md shadow-lg dark:shadow-gray-700 hover:shadow-2xl transition"
             initial="hidden"
@@ -45,7 +45,7 @@ function ContactUs() {
             </p>
           </motion.div>
 
-          {/* Center card */}
+          
           <motion.div
             className="p-6 rounded-xl border border-white/30 bg-white/20 dark:bg-gray-800/40 backdrop-blur-md shadow-lg dark:shadow-gray-700 hover:shadow-2xl transition"
             initial="hidden"
@@ -54,16 +54,17 @@ function ContactUs() {
             variants={centerVariant}
           >
             <h2 className="text-xl font-semibold mb-2 text-purple-900 dark:text-purple-400">
-              📲 Call Us
+              🔗 Connect
             </h2>
             <p className="text-gray-500 dark:text-gray-300">
               Connect with us to discuss your project and requirements.
             </p>
             <br />
             <p className="dark:text-gray-200">📞 98765 43210</p>
+             <p className="dark:text-gray-200">📧 abc@gmail.com</p>
           </motion.div>
 
-          {/* Right card */}
+ 
           <motion.div
             className="p-6 rounded-xl border border-white/30 bg-white/20 dark:bg-gray-800/40 backdrop-blur-md shadow-lg dark:shadow-gray-700 hover:shadow-2xl transition"
             initial="hidden"
