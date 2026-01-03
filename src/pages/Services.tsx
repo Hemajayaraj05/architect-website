@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion, useInView } from "framer-motion";
+import { useEffect, useState, useRef } from "react";
 import type { Variants } from "framer-motion";
 
 import service1 from "../assets/arch.png";
@@ -67,30 +67,41 @@ const cardVariants: Variants = {
   },
 };
 
-// Animated Counter Component
-const AnimatedCounter = ({ target }: { target: number }) => {
+/* ---------------- Animated Counter ---------------- */
+
+const AnimatedCounter = ({
+  target,
+  start,
+}: {
+  target: number;
+  start: boolean;
+}) => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    let start = 0;
+    if (!start) return;
+
+    let current = 0;
     const duration = 1500;
-    const increment = target / (duration / 30);
-    const counter = setInterval(() => {
-      start += increment;
-      if (start >= target) {
-        start = target;
-        clearInterval(counter);
+    const step = target / (duration / 30);
+
+    const timer = setInterval(() => {
+      current += step;
+      if (current >= target) {
+        current = target;
+        clearInterval(timer);
       }
-      setCount(Math.ceil(start));
+      setCount(Math.ceil(current));
     }, 30);
 
-    return () => clearInterval(counter);
-  }, [target]);
+    return () => clearInterval(timer);
+  }, [start, target]);
 
   return <span className="text-4xl font-bold text-amber-900">{count}+</span>;
 };
 
-// Stats to display below services
+/* ---------------- Stats Data ---------------- */
+
 const stats = [
   { label: "Projects Completed", value: 120 },
   { label: "Happy Clients", value: 85 },
@@ -98,9 +109,17 @@ const stats = [
   { label: "3D Models Rendered", value: 95 },
 ];
 
+/* ---------------- Main Component ---------------- */
+
 const Services = () => {
+  const statsRef = useRef<HTMLDivElement | null>(null);
+  const statsInView = useInView(statsRef, { once: true, amount: 0.3 });
+
   return (
-    <section id="expertise" className="pt-24 pb-24 bg-gray-200 md:pl-12 md:pr-12">
+    <section
+      id="expertise"
+      className="pt-24 pb-24 bg-gray-200 md:px-12"
+    >
       {/* Heading */}
       <div className="max-w-7xl mx-auto px-6 mb-16">
         <h2 className="text-4xl font-bold text-center text-amber-900">
@@ -129,6 +148,7 @@ const Services = () => {
             }}
           >
             <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/45 to-black/15" />
+
             <div className="relative z-10 p-8 h-full flex flex-col justify-between max-w-md">
               <div>
                 <p className="text-sm font-medium text-amber-400 mb-2">
@@ -159,12 +179,23 @@ const Services = () => {
         ))}
       </div>
 
-      {/* Stats / Counting Section */}
-      <div className="max-w-7xl mx-auto px-6 mt-16 grid md:grid-cols-4 gap-8 text-center">
+      {/* Stats Section */}
+      <div
+        ref={statsRef}
+        className="max-w-7xl mx-auto px-6 mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
+      >
         {stats.map((stat, idx) => (
-          <div key={idx} className="bg-white/30 backdrop-blur-xl rounded-2xl p-6 shadow-lg">
-            <AnimatedCounter target={stat.value} />
-            <p className="mt-2 text-gray-800 font-medium">{stat.label}</p>
+          <div
+            key={idx}
+            className="bg-white/30 backdrop-blur-xl rounded-2xl p-6 shadow-lg"
+          >
+            <AnimatedCounter
+              target={stat.value}
+              start={statsInView}
+            />
+            <p className="mt-2 text-gray-800 font-medium">
+              {stat.label}
+            </p>
           </div>
         ))}
       </div>
