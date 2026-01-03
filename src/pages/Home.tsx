@@ -62,7 +62,7 @@ const navigate = useNavigate();
           Designing Spaces, <br /> Building Dreams
         </h1>
 
-        <p className="text-gray-600 mb-8 text-base md:text-lg lg:text-xl max-w-2xl">
+        <p className="text-white  mb-8 text-base md:text-lg lg:text-xl max-w-2xl">
           Innovative Architectural Solutions for Modern Living
         </p>
 <button

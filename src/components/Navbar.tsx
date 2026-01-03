@@ -21,7 +21,7 @@ function Navbar() {
   return (
     <header className="fixed top-4 left-0 right-0 md:left-12 md:right-12 z-50 px-4 md:px-0">
       <nav className="max-w-5xl mx-auto flex items-center justify-between bg-white/30 backdrop-blur-lg border border-white/40 shadow-lg rounded-3xl md:rounded-4xl px-4 py-2">
-        {/* Brand */}
+    
       
 
 <div className="flex items-center gap-2">
@@ -39,7 +39,7 @@ function Navbar() {
 </div>
 
 
-        {/* Desktop Links */}
+     
         <div className="hidden md:flex items-center gap-8 text-sm font-medium">
           {links.map((link) => (
             <Link
@@ -56,7 +56,7 @@ function Navbar() {
           ))}
         </div>
 
-        {/* Call Button (Desktop) */}
+        
         <a
           href="tel:+916384284600"
           className="hidden md:inline-block text-sm font-medium bg-amber-500 px-4 py-2 rounded-full text-white hover:bg-amber-600 transition"
@@ -64,7 +64,6 @@ function Navbar() {
           Call Us
         </a>
 
-        {/* Mobile Hamburger */}
         <button
           className="md:hidden flex items-center justify-center p-2 bg-amber-500 rounded-md text-white text-2xl"
           onClick={() => setMobileOpen(true)}
@@ -73,7 +72,7 @@ function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile Menu */}
+   
       <div
         className={`fixed top-0 right-0 bottom-0 w-64 bg-white/95 backdrop-blur-md shadow-lg transform transition-transform duration-300 ease-in-out z-50 md:hidden ${
           mobileOpen ? "translate-x-0" : "translate-x-full"
