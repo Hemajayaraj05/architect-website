@@ -1,125 +1,18 @@
+// src/pages/Services.tsx
+
 import { motion, useInView } from "framer-motion";
-import { useEffect, useState, useRef } from "react";
-import type { Variants } from "framer-motion";
+import { useRef } from "react";
 
-import service1 from "../assets/arch.png";
-import service2 from "../assets/int.png";
-import service3 from "../assets/serv3.png";
-import service4 from "../assets/serv4.png";
-
-type Service = {
-  title: string;
-  subtitle: string;
-  description: string;
-  tags: string[];
-  image: string;
-  direction: "left" | "right";
-};
-
-const services: Service[] = [
-  {
-    title: "Architectural Design",
-    subtitle: "Professional Design",
-    description:
-      "We create stunning residential, commercial, and institutional spaces tailored to your vision.",
-    tags: ["Residential", "Commercial", "Institutional"],
-    image: service1,
-    direction: "left",
-  },
-  {
-    title: "Interior & Landscape Design",
-    subtitle: "Sustainable & Modern",
-    description:
-      "From interiors to landscapes, we blend creativity and functionality for beautiful, practical spaces.",
-    tags: ["Interiors", "Landscape", "Sustainable"],
-    image: service2,
-    direction: "right",
-  },
-  {
-    title: "Project Management",
-    subtitle: "Project Execution",
-    description:
-      "We manage timelines, budgets, and execution to ensure smooth and timely project delivery.",
-    tags: ["Planning", "Execution", "Supervision"],
-    image: service3,
-    direction: "left",
-  },
-  {
-    title: "3D Modeling & Rendering",
-    subtitle: "Visualization & Planning",
-    description:
-      "High-quality 3D visuals and renderings to help you visualize your project before construction.",
-    tags: ["3D Views", "Renderings", "Walkthroughs"],
-    image: service4,
-    direction: "right",
-  },
-];
-
-const cardVariants: Variants = {
-  hidden: (direction: number) => ({
-    opacity: 0,
-    x: direction,
-  }),
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
-  },
-};
-
-/* ---------------- Animated Counter ---------------- */
-
-const AnimatedCounter = ({
-  target,
-  start,
-}: {
-  target: number;
-  start: boolean;
-}) => {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (!start) return;
-
-    let current = 0;
-    const duration = 1500;
-    const step = target / (duration / 30);
-
-    const timer = setInterval(() => {
-      current += step;
-      if (current >= target) {
-        current = target;
-        clearInterval(timer);
-      }
-      setCount(Math.ceil(current));
-    }, 30);
-
-    return () => clearInterval(timer);
-  }, [start, target]);
-
-  return <span className="text-4xl font-bold text-amber-900">{count}+</span>;
-};
-
-/* ---------------- Stats Data ---------------- */
-
-const stats = [
-  { label: "Projects Completed", value: 120 },
-  { label: "Happy Clients", value: 85 },
-  { label: "Ongoing Projects", value: 200 },
-  { label: "3D Models Rendered", value: 95 },
-];
-
-/* ---------------- Main Component ---------------- */
+import { services, stats } from "../data/services.data";
+import { cardVariants } from "../assets/animations/services.animations";
+import AnimatedCounter from "../components/AnimatedCounter";
 
 const Services = () => {
   const statsRef = useRef<HTMLDivElement | null>(null);
   const statsInView = useInView(statsRef, { once: true, amount: 0.3 });
 
   return (
-    <section
-      id="expertise"
-      className="pt-24 pb-24 bg-gray-200 md:px-12"
-    >
+    <section id="expertise" className="pt-24 pb-24 bg-gray-200 md:px-12">
       {/* Heading */}
       <div className="max-w-7xl mx-auto px-6 mb-16">
         <h2 className="text-4xl font-bold text-center text-amber-900">
@@ -179,7 +72,7 @@ const Services = () => {
         ))}
       </div>
 
-      {/* Stats Section */}
+      {/* Stats */}
       <div
         ref={statsRef}
         className="max-w-7xl mx-auto px-6 mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center"

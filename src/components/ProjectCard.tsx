@@ -58,7 +58,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, location, images }) =>
       {/* Minimal Content */}
       <div className="p-3 text-center">
         <h3 className="text-lg md:text-xl font-semibold text-wood">{title}</h3>
-        <p className="text-gray-600 mt-1 text-sm md:text-base">{location}</p>
+        <p className="text-gray-600 mt-1 text-sm md:text-base">📍{location}</p>
       </div>
     </div>
   );

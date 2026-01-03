@@ -3,6 +3,16 @@ import heroImage from "../assets/img01.jpeg";
 import founder1 from "../assets/img01.jpeg";
 import founder2 from "../assets/img01.jpeg";
 
+// Company Images
+import company1 from "../assets/aboutimage/intro.jpg";
+import company2 from "../assets/aboutimage/image2.jpg";
+import company3 from "../assets/aboutimage/image3.jpg";
+import company4 from "../assets/aboutimage/image5.jpg";
+import company5 from "../assets/aboutimage/image4.jpg";
+import company6 from "../assets/aboutimage/image6.jpg";
+import company7 from "../assets/aboutimage/image7.jpg";
+import company8 from "../assets/aboutimage/img38.jpg";
+
 function About() {
   return (
     <section id="about" className="bg-gray-100 py-28">
@@ -26,7 +36,7 @@ function About() {
           transition={{ duration: 0.9 }}
           className="flex justify-center"
         >
-          <div className="w-full max-w-md aspect-[4/3] overflow-hidden rounded-3xl shadow-2xl">
+          <div className="w-full max-w-md aspect-4/3 overflow-hidden rounded-3xl shadow-2xl">
             <img
               src={heroImage}
               alt="Studio"
@@ -111,6 +121,34 @@ function About() {
               Design Director
             </p>
           </motion.div>
+        </div>
+      </div>
+
+      {/* Company Images Section (ADDED – nothing above changed) */}
+      <div className="mt-32">
+        <h4 className="text-center text-2xl font-medium text-amber-900 mb-16">
+          Inside Our Studio
+        </h4>
+
+        <div className="max-w-6xl mx-auto px-8 grid grid-cols-2 md:grid-cols-4 gap-10">
+          {[company1,company7, company2, company3, company4,company5,company6,,company8].map((img, index) => (
+            <motion.div
+              key={index}
+              animate={{ y: [0, -12, 0] }}
+              transition={{
+                duration: 4 + index,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="rounded-2xl overflow-hidden shadow-xl"
+            >
+              <img
+                src={img}
+                alt={`Company ${index + 1}`}
+                className="w-full h-full object-cover aspect-square"
+              />
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
