@@ -1,7 +1,7 @@
 import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
 
-// Background images
+
 import bg1 from "../assets/serv4.png";
 import bg2 from "../assets/serv4.png";
 import bg3 from "../assets/serv4.png";
@@ -17,12 +17,12 @@ function Home() {
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
-      {/* Fixed Navbar */}
+     
       <Navbar />
 
-      {/* Background Layers */}
+   
       <div className="fixed inset-0 w-full h-full overflow-hidden">
-        {/* Layer 1 - scroll left */}
+        
         <div className="flex w-[300%] h-full animate-scrollLeft">
           {bgImages1.map((img, idx) => (
             <div
@@ -33,7 +33,7 @@ function Home() {
           ))}
         </div>
 
-        {/* Layer 2 - scroll right */}
+       
         <div className="flex w-[300%] h-full animate-scrollRight absolute inset-0">
           {bgImages2.map((img, idx) => (
             <div
@@ -45,7 +45,7 @@ function Home() {
         </div>
       </div>
 
-      {/* Main Content */}
+      
       <motion.div
         className="relative z-10 flex flex-col items-center justify-center w-full h-screen px-6 text-center"
         initial="hidden"
@@ -84,7 +84,7 @@ function Home() {
         </a>
       </motion.div>
 
-      {/* Tailwind Custom Animations */}
+
       <style>
         {`
           @keyframes scrollLeft {

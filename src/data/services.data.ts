@@ -1,8 +1,8 @@
 // src/data/services.data.ts
 
-import service1 from "../assets/arch.png";
-import service2 from "../assets/int.png";
-import service3 from "../assets/serv3.png";
+import service1 from "../assets/bishop/img23.jpg";
+import service2 from "../assets/elevations/padur02.png";
+import service3 from "../assets/arch.png";
 import service4 from "../assets/serv4.png";
 
 export type Service = {

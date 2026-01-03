@@ -1,4 +1,4 @@
-// src/pages/Services.tsx
+
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
@@ -13,7 +13,7 @@ const Services = () => {
 
   return (
     <section id="expertise" className="pt-24 pb-24 bg-gray-200 md:px-12">
-      {/* Heading */}
+    
       <div className="max-w-7xl mx-auto px-6 mb-16">
         <h2 className="text-4xl font-bold text-center text-amber-900">
           Our Services
@@ -23,7 +23,7 @@ const Services = () => {
         </p>
       </div>
 
-      {/* Service Cards */}
+    
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10">
         {services.map((service, index) => (
           <motion.div
@@ -72,7 +72,7 @@ const Services = () => {
         ))}
       </div>
 
-      {/* Stats */}
+     
       <div
         ref={statsRef}
         className="max-w-7xl mx-auto px-6 mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
