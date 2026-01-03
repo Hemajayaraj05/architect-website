@@ -1,57 +1,47 @@
+// Projects.tsx
 import ProjectCard from "../components/ProjectCard";
 
-import project1 from "../assets/At Work.jfif";
-import project2 from "../assets/At Work.jfif";
-import project3 from "../assets/At Work.jfif";
+import project1Img1 from "../assets/serv4.png";
+import project1Img2 from "../assets/serv4.png";
+import project2Img1 from "../assets/serv4.png";
+import project2Img2 from "../assets/serv4.png";
 
 const projects = [
   {
     title: "Modern Villa",
-    description: "Luxury residential villa with clean modern lines.",
     location: "Bangalore, India",
-    image: project1,
+    images: [project1Img1, project1Img2],
   },
   {
     title: "Corporate Office",
-    description: "High-performance workspace with sustainable design.",
     location: "Hyderabad, India",
-    image: project2,
+    images: [project2Img1, project2Img2],
   },
   {
     title: "Urban Apartment",
-    description: "Smart living spaces in the heart of the city.",
     location: "Chennai, India",
-    image: project3,
+    images: [project1Img1, project2Img2],
   },
 ];
 
 const Projects = () => {
   return (
-    <section id="work" className="py-16 bg-purple-100 dark:bg-gray-900 transition-colors duration-500">
-     
-      <div className="max-w-7xl mx-auto px-6 mb-16">
-        <h2 className="text-4xl font-bold text-purple-900  dark:text-purple-400 text-center">
-          Our Projects
-        </h2>
-        <p className="text-center text-black dark:text-gray-300 mt-2 text-sm">
+    <section
+      className="bg-gray-200 md:pr-11 md:pl-11"
+      id="projects"
+      
+    >
+      <div className="max-w-7xl mx-auto px-6 py-16 text-center">
+        <h2 className="text-4xl font-bold text-amber-900 mb-2 pt-9">Our Projects</h2>
+        <p className="text-gray-700 text-lg">
           Showcasing spaces that combine innovation, function, and style.
         </p>
       </div>
 
-      <div
-        className="
-          group max-w-5xl mx-auto px-4 md:px-16 py-8 overflow-hidden
-          bg-white/30 dark:bg-gray-800/30 backdrop-blur-xl
-          border border-white/40 dark:border-gray-700/40
-          rounded-3xl shadow-xl
-        "
-      >
-       
-        <div className="flex gap-8 animate-scroll w-max">
-          {[...projects, ...projects].map((project, index) => (
-            <ProjectCard key={index} {...project} />
-          ))}
-        </div>
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-18 pb-16">
+        {projects.map((project, idx) => (
+          <ProjectCard key={idx} {...project} />
+        ))}
       </div>
     </section>
   );

@@ -1,114 +1,119 @@
-
-import heroImage from "../assets/about img.png";
 import { motion } from "framer-motion";
+import heroImage from "../assets/img01.jpeg";
+import founder1 from "../assets/img01.jpeg";
+import founder2 from "../assets/img01.jpeg";
 
 function About() {
-  
-  const featureVariants = {
-    hidden: { opacity: 0, x: 50 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
-  };
-
   return (
-    <div id="process" className="bg-purple-100 dark:bg-gray-900">
-      <h2 className="text-4xl font-bold text-purple-900 dark:text-purple-400 text-center pt-6">
-        About Us
-      </h2>
-      <p className="text-center text-gray-700 dark:text-gray-300 mt-2 text-sm md:hidden">
-  Building innovative spaces where design meets purpose.
-</p>
+    <section id="about" className="bg-gray-100 py-28">
+      {/* Heading */}
+      <div className="text-center mb-8 px-8">
+        <h2 className="text-4xl font-semibold text-amber-900 tracking-wide">
+          About Us
+        </h2>
+        <p className="mt-4 text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          We design spaces that feel calm, timeless, and deeply human.
+        </p>
+      </div>
 
-      <section className="py-5 px-6 md:px-20">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-14 items-center">
-
-         
-          <div>
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-10 lg:px-20 grid md:grid-cols-2 gap-20 items-center">
+        {/* Image */}
+        <motion.div
+          initial={{ opacity: 0, x: -60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.9 }}
+          className="flex justify-center"
+        >
+          <div className="w-full max-w-md aspect-[4/3] overflow-hidden rounded-3xl shadow-2xl">
             <img
               src={heroImage}
-              alt="Architect studio"
-              className="rounded-xl border-purple-500 dark:border-purple-400 object-cover w-full h-100"
+              alt="Studio"
+              className="w-full h-full object-cover"
             />
           </div>
+        </motion.div>
 
-         
-          <div className="flex flex-col">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6 leading-tight text-center">
-              Crafting Spaces That Inspire Living
-            </h2>
+        {/* Text */}
+        <motion.div
+          initial={{ opacity: 0, x: 60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.9 }}
+          className="max-w-xl"
+        >
+          <p className="text-sm uppercase tracking-widest text-amber-700 mb-4 text-center">
+            Our Philosophy
+          </p>
 
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
-              We are an architectural studio focused on designing meaningful
-              environments that balance aesthetics, function, and innovation.
-              Every project is shaped by people, purpose, and place.
-            </p>
+          <h3 className="text-3xl font-medium mb-6 leading-snug text-center text-gray-900">
+            Crafting Inspired Spaces
+          </h3>
 
-           
-            <div className="space-y-5">
-           
-              <motion.div
-                className="flex gap-4"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={featureVariants}
-                transition={{ delay: 2 }}
-              >
-                <span className="text-purple-600 dark:text-purple-400 text-xl">🏛️</span>
-                <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-gray-100">
-                    Modern Design Approach
-                  </h4>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">
-                    Clean lines, thoughtful materials, and timeless aesthetics.
-                  </p>
-                </div>
-              </motion.div>
+          <p className="text-gray-700 leading-8 mb-6">
+            We are a multidisciplinary architecture and design studio creating
+            thoughtful environments for living, working, and gathering.
+          </p>
 
-          
-              <motion.div
-                className="flex gap-4"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={featureVariants}
-                transition={{ delay: 4 }}
-              >
-                <span className="text-purple-600 dark:text-purple-400 text-xl">🏗️</span>
-                <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-gray-100">
-                    Sustainable Solutions
-                  </h4>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">
-                    Environmentally responsible design for future generations.
-                  </p>
-                </div>
-              </motion.div>
+          <p className="text-gray-700 leading-8">
+            Our approach blends functionality, sustainability, and emotion —
+            shaping spaces that feel intentional, efficient, and enduring.
+          </p>
+        </motion.div>
+      </div>
 
-          
-              <motion.div
-                className="flex gap-4"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={featureVariants}
-                transition={{ delay: 6 }}
-              >
-                <span className="text-purple-600 dark:text-purple-400 text-xl">👤</span>
-                <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-gray-100">
-                    Client-Focused Process
-                  </h4>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">
-                    Every space is tailored to real human needs.
-                  </p>
-                </div>
-              </motion.div>
+      {/* Founders Section */}
+      <div className="mt-28">
+        <h4 className="text-center text-2xl font-medium text-amber-900 mb-16">
+          Meet the Minds Behind the Design
+        </h4>
+
+        <div className="flex justify-center gap-20 flex-wrap">
+          {/* Founder 1 */}
+          <motion.div
+            animate={{ y: [0, -12, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="flex flex-col items-center"
+          >
+            <div className="w-36 h-36 rounded-full overflow-hidden shadow-xl mb-4">
+              <img
+                src={founder1}
+                alt="Founder 1"
+                className="w-full h-full object-cover"
+              />
             </div>
-          </div>
+            <h5 className="font-medium text-gray-900">
+              Arjun Kumar
+            </h5>
+            <p className="text-sm text-gray-600">
+              Principal Architect
+            </p>
+          </motion.div>
 
+          {/* Founder 2 */}
+          <motion.div
+            animate={{ y: [0, -16, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            className="flex flex-col items-center"
+          >
+            <div className="w-36 h-36 rounded-full overflow-hidden shadow-xl mb-4">
+              <img
+                src={founder2}
+                alt="Founder 2"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <h5 className="font-medium text-gray-900">
+              Karthik Raja
+            </h5>
+            <p className="text-sm text-gray-600">
+              Design Director
+            </p>
+          </motion.div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 }
 

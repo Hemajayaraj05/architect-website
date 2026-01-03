@@ -1,84 +1,112 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 function Navbar() {
+  const location = useLocation();
+  const [mobileOpen, setMobileOpen] = useState(false);
+
   useEffect(() => {
     document.documentElement.classList.add("dark");
   }, []);
 
+  const links = [
+    { name: "Home", path: "/" },
+    { name: "Projects", path: "/projects" },
+    { name: "Services", path: "/services" },
+    { name: "About", path: "/about" },
+    { name: "Contact", path: "/contact" },
+  ];
+
   return (
-    <header className="fixed top-4 inset-x-4 md:inset-x-20 z-50">
-      <nav
-        className="
-        relative mx-auto max-w-7xl
-        flex items-center justify-between
-        px-5 py-1
-        rounded-4xl md:rounded-full
-
-        bg-linear-to-br from-white/20 to-white/5
-        dark:from-white/10 dark:to-black/10
-
-        backdrop-blur-2xl
-        border border-white/30
-        shadow-[0_8px_32px_rgba(0,0,0,0.35)]
-        overflow-hidden
-        "
-      >
-        {/* Glass reflection */}
-        <span
-          className="pointer-events-none absolute inset-0
-          bg-linear-to-r from-transparent via-white/30 to-transparent
-          opacity-20"
-        />
-
-        {/* Logo */}
-        <div className="relative z-10 text-lg md:text-xl font-semibold text-white">
-          ARCHI<span className="text-purple-400">TECT</span>
+    <header className="fixed top-4 left-0 right-0 md:left-12 md:right-12 z-50 px-4 md:px-0">
+      <nav className="max-w-5xl mx-auto flex items-center justify-between bg-white/30 backdrop-blur-lg border border-white/40 shadow-lg rounded-3xl md:rounded-4xl px-4 py-2">
+        {/* Brand */}
+        <div className="text-lg md:text-xl font-bold text-amber-900">
+          ARCHI<span className="text-amber-500">TECT</span>
         </div>
 
-        {/* Desktop Menu */}
-        <div className="relative z-10 hidden md:flex items-center gap-8 text-sm font-medium">
-          {["Overview", "Work", "Expertise", "Process", "Insights", "Connect"].map(
-            (link) => (
-              <a
-                key={link}
-                href={`#${link.toLowerCase()}`}
-                className="
-                  text-white/80 hover:text-purple-400 transition
-                  relative after:absolute after:left-0 after:-bottom-1
-                  after:h-0.5 after:w-0 after:bg-purple-400
-                  after:transition-all hover:after:w-full
-                "
-              >
-                {link}
-              </a>
-            )
-          )}
+        {/* Desktop Links */}
+        <div className="hidden md:flex items-center gap-8 text-sm font-medium">
+          {links.map((link) => (
+            <Link
+              key={link.name}
+              to={link.path}
+              className={`text-amber-800/90 hover:text-amber-500 transition border-b-2 ${
+                location.pathname === link.path
+                  ? "border-amber-500"
+                  : "border-transparent"
+              } pb-1`}
+            >
+              {link.name}
+            </Link>
+          ))}
         </div>
 
-        {/* Call Us — Mobile & Desktop */}
+        {/* Call Button (Desktop) */}
         <a
           href="tel:+919876543210"
-          className="
-            relative z-10
-            text-sm font-medium
-            bg-purple-600/80
-            backdrop-blur-lg
-            text-white
-            px-4 py-2
-            rounded-full
-            shadow-md
-            hover:bg-purple-500
-            transition
-          "
+          className="hidden md:inline-block text-sm font-medium bg-amber-500 px-4 py-2 rounded-full text-white hover:bg-amber-600 transition"
         >
           Call Us
         </a>
+
+        {/* Mobile Hamburger */}
+        <button
+          className="md:hidden flex items-center justify-center p-2 bg-amber-500 rounded-md text-white text-2xl"
+          onClick={() => setMobileOpen(true)}
+        >
+          ☰
+        </button>
       </nav>
+
+      {/* Mobile Menu */}
+      <div
+        className={`fixed top-0 right-0 bottom-0 w-64 bg-white/95 backdrop-blur-md shadow-lg transform transition-transform duration-300 ease-in-out z-50 md:hidden ${
+          mobileOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        {/* Close Button */}
+        <button
+          className="absolute top-5 right-5 text-amber-700 text-2xl font-bold hover:text-amber-500 transition"
+          onClick={() => setMobileOpen(false)}
+        >
+          ✕
+        </button>
+
+        <div className="flex flex-col mt-24 px-6 gap-6 text-lg font-medium">
+          {links.map((link) => (
+            <Link
+              key={link.name}
+              to={link.path}
+              onClick={() => setMobileOpen(false)}
+              className={`transition-colors duration-200 ${
+                location.pathname === link.path
+                  ? "font-bold text-amber-500"
+                  : "text-amber-900 hover:text-amber-500"
+              }`}
+            >
+              {link.name}
+            </Link>
+          ))}
+
+          <a
+            href="tel:+919876543210"
+            className="mt-4 text-white bg-amber-500 px-4 py-2 rounded-full text-center hover:bg-amber-600 transition"
+          >
+            Call Us
+          </a>
+        </div>
+      </div>
+
+      {/* Overlay */}
+      {mobileOpen && (
+        <div
+          className="fixed inset-0 bg-black/30 z-40 md:hidden"
+          onClick={() => setMobileOpen(false)}
+        />
+      )}
     </header>
   );
 }
 
 export default Navbar;
-
-
-

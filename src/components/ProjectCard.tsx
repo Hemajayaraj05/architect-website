@@ -1,43 +1,64 @@
+// src/components/ProjectCard.tsx
+import React, { useRef } from "react";
+
 type ProjectCardProps = {
   title: string;
-  description: string;
   location: string;
-  image: string;
+  images: string[];
 };
 
-const ProjectCard = ({ title, description, location, image }: ProjectCardProps) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ title, location, images }) => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollLeft = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: -scrollRef.current.offsetWidth, behavior: "smooth" });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: scrollRef.current.offsetWidth, behavior: "smooth" });
+    }
+  };
+
   return (
-    <div
-      className="
-        w-70 shrink-0
-        rounded-2xl bg-white dark:bg-gray-800
-        overflow-hidden
-        shadow-md dark:shadow-gray-700
-        transition-all duration-300 ease-out
-        hover:scale-110 hover:shadow-2xl
-        hover:z-50
-      "
-    >
-     
-      <img
-        src={image}
-        alt={title}
-        className="h-44 w-full object-cover"
-      />
+    <div className="bg-gray-100 rounded-xl overflow-hidden relative">
+      {/* Image Carousel */}
+      <div className="relative w-full h-54 md:h-70 lg:h-76 overflow-hidden">
+        <div
+          ref={scrollRef}
+          className="flex w-full h-full overflow-x-hidden scroll-smooth"
+        >
+          {images.map((img, idx) => (
+            <img
+              key={idx}
+              src={img}
+              alt={`${title}-${idx}`}
+              className="w-full shrink-0 h-full object-cover"
+            />
+          ))}
+        </div>
 
-      
-      <div className="p-5">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-          {title}
-        </h3>
+        {/* Left/Right Buttons */}
+        <button
+          onClick={scrollLeft}
+          className="absolute left-3 top-1/2 -translate-y-1/2 bg-wood/70 text-white p-3 rounded-full hover:bg-wood transition"
+        >
+          ◀
+        </button>
+        <button
+          onClick={scrollRight}
+          className="absolute right-3 top-1/2 -translate-y-1/2 bg-wood/70 text-white p-3 rounded-full hover:bg-wood transition"
+        >
+          ▶
+        </button>
+      </div>
 
-        <p className="text-sm text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">
-          {description}
-        </p>
-
-        <p className="text-xs text-purple-600 dark:text-purple-400 mt-4 font-medium">
-          📍 {location}
-        </p>
+      {/* Minimal Content */}
+      <div className="p-3 text-center">
+        <h3 className="text-lg md:text-xl font-semibold text-wood">{title}</h3>
+        <p className="text-gray-600 mt-1 text-sm md:text-base">{location}</p>
       </div>
     </div>
   );
