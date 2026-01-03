@@ -1,7 +1,13 @@
 import ProjectCard from "../components/ProjectCard";
 import { projects } from "../data/projects";
-
+import { useEffect } from "react";
 const Projects = () => {
+    useEffect(() => {
+  projects.forEach(project => {
+    const img = new Image();
+    img.src = project.images[0];
+  });
+}, []);
   return (
     <section
       className="bg-gray-200 md:pr-11 md:pl-11"

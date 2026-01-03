@@ -25,13 +25,17 @@ import mus3 from "../assets/museum/img139.jpg"
 import mus4 from "../assets/museum/img75.jpg"
 import mus5 from "../assets/museum/img84.jpg"
 import mus6 from "../assets/museum/img93.jpg"
-import chap1 from "../assets/chappel/img10.jpg"
-import chap2 from "../assets/chappel/img4.jpg"
-import chap3 from "../assets/chappel/img7.jpg"
-import paul1 from "../assets/paulraj/img10.jpg"
-import paul2 from "../assets/paulraj/img13.jpg"
-import paul3 from "../assets/paulraj/img4.jpg"
-import paul4 from "../assets/paulraj/img7.jpg"
+import chap1 from "../assets/chappel/Screenshot 2026-01-04 001146.png"
+import chap2 from "../assets/chappel/Screenshot 2026-01-04 001200.png"
+import chap3 from "../assets/chappel/Screenshot 2026-01-04 001213.png"
+import paul1 from "../assets/paulraj/Screenshot 2026-01-04 000915.png"
+import paul2 from "../assets/paulraj/Screenshot 2026-01-04 000927.png"
+import paul3 from "../assets/paulraj/Screenshot 2026-01-04 000934.png"
+import paul4 from "../assets/paulraj/Screenshot 2026-01-04 000939.png"
+import wilson1 from "../assets/wilson/Screenshot 2026-01-03 230428.png"
+import wilson2 from "../assets/wilson/Screenshot 2026-01-03 230509.png"
+import wilson3 from "../assets/wilson/Screenshot 2026-01-03 230528.png"
+import wilson4 from "../assets/wilson/Screenshot 2026-01-03 230542.png"
 
 
 
@@ -72,7 +76,7 @@ export const projects: Project[] = [
     {
     title: "Wilson Residence",
     location: "Kalayarkovil,Madurai, India",
-    images: [chap1,chap2,chap3],
+    images: [wilson1,wilson2,wilson3,wilson4],
   },
    {
     title: "Cyril Residence",
