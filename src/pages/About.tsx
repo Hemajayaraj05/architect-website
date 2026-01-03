@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import heroImage from "../assets/img01.jpeg";
-import founder1 from "../assets/img01.jpeg";
-import founder2 from "../assets/img01.jpeg";
+import founder1 from "../assets/austin.jpeg";
+import founder2 from "../assets/ajith.jpeg";
 
 // Company Images
 import company1 from "../assets/aboutimage/intro.jpg";
@@ -94,10 +94,10 @@ function About() {
               />
             </div>
             <h5 className="font-medium text-gray-900">
-              Arjun Kumar
+              Ar Ajith M
             </h5>
             <p className="text-sm text-gray-600">
-              Principal Architect
+             Director
             </p>
           </motion.div>
 
@@ -115,10 +115,10 @@ function About() {
               />
             </div>
             <h5 className="font-medium text-gray-900">
-              Karthik Raja
+              Ar Austin Kingsly D
             </h5>
             <p className="text-sm text-gray-600">
-              Design Director
+              Managing Director
             </p>
           </motion.div>
         </div>
