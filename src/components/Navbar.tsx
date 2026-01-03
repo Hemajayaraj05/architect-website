@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+ import logo from "../assets/logo.jpeg";
 
 function Navbar() {
   const location = useLocation();
@@ -21,9 +22,22 @@ function Navbar() {
     <header className="fixed top-4 left-0 right-0 md:left-12 md:right-12 z-50 px-4 md:px-0">
       <nav className="max-w-5xl mx-auto flex items-center justify-between bg-white/30 backdrop-blur-lg border border-white/40 shadow-lg rounded-3xl md:rounded-4xl px-4 py-2">
         {/* Brand */}
-        <div className="text-lg md:text-xl font-bold text-amber-900">
-          ARCHI<span className="text-amber-500">TECT</span>
-        </div>
+      
+
+<div className="flex items-center gap-2">
+  <img
+    src={logo}
+    alt="LA Architect Logo"
+    className="w-9 h-9 rounded-full object-cover shadow-md"
+  />
+
+  <div className="text-lg md:text-xl font-bold">
+    <span className="text-amber-900">LA </span>
+    ARCHI
+    <span className="text-amber-500">TECT</span>
+  </div>
+</div>
+
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8 text-sm font-medium">

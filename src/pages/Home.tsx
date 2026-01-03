@@ -1,9 +1,11 @@
 import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 
-import bg1 from "../assets/serv4.png";
-import bg2 from "../assets/serv4.png";
+
+import bg1 from "../assets/bishop/img15.jpg";
+import bg2 from "../assets/bishop/img35.jpg";
 import bg3 from "../assets/serv4.png";
 
 function Home() {
@@ -11,7 +13,7 @@ function Home() {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
   };
-
+const navigate = useNavigate();
   const bgImages1 = [bg1, bg2, bg3];
   const bgImages2 = [bg3, bg1, bg2];
 
@@ -27,7 +29,7 @@ function Home() {
           {bgImages1.map((img, idx) => (
             <div
               key={idx}
-              className="w-screen h-full bg-cover bg-center flex-shrink-0"
+              className="w-screen h-full bg-cover bg-center shrink-0"
               style={{ backgroundImage: `url(${img})` }}
             />
           ))}
@@ -38,7 +40,7 @@ function Home() {
           {bgImages2.map((img, idx) => (
             <div
               key={idx}
-              className="w-screen h-full bg-cover bg-center flex-shrink-0"
+              className="w-screen h-full bg-cover bg-center shrink-0"
               style={{ backgroundImage: `url(${img})` }}
             />
           ))}
@@ -52,36 +54,36 @@ function Home() {
         animate="visible"
         variants={leftContentVariants}
       >
-        <p className="mb-6 text-gray-700 text-sm md:text-base lg:text-lg">
+        <p className="mb-6 text-black text-sm md:text-base lg:text-lg">
           Where imagination meets structure, dreams become spaces ❤️
         </p>
 
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-wood">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-amber-400">
           Designing Spaces, <br /> Building Dreams
         </h1>
 
         <p className="text-gray-600 mb-8 text-base md:text-lg lg:text-xl max-w-2xl">
           Innovative Architectural Solutions for Modern Living
         </p>
+<button
+  onClick={() => navigate("/projects")}
+  className="
+    inline-flex items-center justify-center
+    bg-[#A05A49]
+    text-white
+    px-6 md:px-8 py-3 md:py-4
+    rounded-lg
+    font-medium
+    cursor-pointer
+    transition-all duration-300
+    hover:bg-[#8B4538]
+    hover:shadow-lg
+    hover:scale-[1.03]
+  "
+>
+  Explore Our Projects
+</button>
 
-        <a
-          href="#projects"
-          className="
-            inline-flex items-center justify-center
-            bg-[#A05A49]
-            text-white
-            px-6 md:px-8 py-3 md:py-4
-            rounded-lg
-            font-medium
-            cursor-pointer
-            transition-all duration-300
-            hover:bg-[#8B4538]
-            hover:shadow-lg
-            hover:scale-[1.03]
-          "
-        >
-          Explore Our Projects
-        </a>
       </motion.div>
 
 

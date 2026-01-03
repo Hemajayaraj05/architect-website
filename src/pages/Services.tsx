@@ -33,14 +33,14 @@ const Services = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
-            className="relative rounded-3xl overflow-hidden min-h-[320px] shadow-xl"
+            className="relative rounded-3xl overflow-hidden min-h-80 shadow-xl"
             style={{
               backgroundImage: `url(${service.image})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/45 to-black/15" />
+            <div className="absolute inset-0 bg-linear-to-r from-black/65 via-black/45 to-black/15" />
 
             <div className="relative z-10 p-8 h-full flex flex-col justify-between max-w-md">
               <div>
