@@ -58,7 +58,7 @@ function Navbar() {
 
         {/* Call Button (Desktop) */}
         <a
-          href="tel:+919876543210"
+          href="tel:+916384284600"
           className="hidden md:inline-block text-sm font-medium bg-amber-500 px-4 py-2 rounded-full text-white hover:bg-amber-600 transition"
         >
           Call Us
