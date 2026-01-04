@@ -54,11 +54,11 @@ const navigate = useNavigate();
         animate="visible"
         variants={leftContentVariants}
       >
-        <p className="mb-6 text-amber-600 font-bold text-sm md:text-base lg:text-lg">
+        <p className="mb-6 text-white font-bold text-sm md:text-base lg:text-lg">
           Where imagination meets structure, dreams become spaces ❤️
         </p>
 
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-amber-400">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">
           Designing Spaces, <br /> Building Dreams
         </h1>
 

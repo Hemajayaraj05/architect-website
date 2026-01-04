@@ -36,13 +36,18 @@ function About() {
           transition={{ duration: 0.9 }}
           className="flex justify-center"
         >
-          <div className="w-full max-w-md aspect-4/3 overflow-hidden rounded-3xl shadow-2xl">
-            <img
-              src={heroImage}
-              alt="Studio"
-              className="w-full h-full object-cover"
-            />
-          </div>
+<div className="w-full max-w-sm rounded-3xl bg-gray-100 shadow-2xl p-3">
+  <div className="w-full aspect-square rounded-2xl overflow-hidden">
+    <img
+      src={heroImage}
+      alt="Studio"
+      className="w-full h-full object-cover object-top"
+    />
+  </div>
+</div>
+
+
+
         </motion.div>
 
         {/* Text */}

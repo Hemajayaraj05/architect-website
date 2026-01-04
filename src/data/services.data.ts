@@ -54,8 +54,8 @@ export const services: Service[] = [
 ];
 
 export const stats = [
-  { label: "Projects Completed", value: 120 },
-  { label: "Happy Clients", value: 85 },
-  { label: "Ongoing Projects", value: 200 },
+  { label: "Projects Completed", value: 30 },
+  { label: "Happy Clients", value: 25 },
+  { label: "Ongoing Projects", value: 15 },
   { label: "3D Models Rendered", value: 95 },
 ];

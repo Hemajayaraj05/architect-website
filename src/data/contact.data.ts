@@ -9,7 +9,7 @@ export const contactInfo = [
   },
   {
     title: "🔗 Connect",
-    text: "📞 638 4284 600\n📧 ajithmuthu.la@gmail.com \n📞 900 3851 246\n 📧 ajithmuthu.la@gmail.com",
+    text: "📞 638 4284 600\n📧 ajithmuthu.la@gmail.com \n📞 900 3851 246\n 📧 austinkingsly.la@gmail.com",
   },
   {
     title: "🕒 Office Hours",
