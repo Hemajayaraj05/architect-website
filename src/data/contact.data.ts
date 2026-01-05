@@ -4,15 +4,15 @@ import { FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa";
 
 export const contactInfo = [
   {
-    title: "🏢 Visit Us",
+    title: "Visit Us",
     text: "424, East Cross Street, Anna Nagar, Madurai 20",
   },
   {
-    title: "🔗 Connect",
-    text: "📞 638 4284 600\n📧 ajithmuthu.la@gmail.com \n📞 900 3851 246\n 📧 austinkingsly.la@gmail.com",
+    title: "Connect",
+    text: " 638 4284 600\n ajithmuthu.la@gmail.com \n 900 3851 246\n  austinkingsly.la@gmail.com",
   },
   {
-    title: "🕒 Office Hours",
+    title: " Office Hours",
     text: "Mon – Sat\n10:00 AM – 6:00 PM",
   },
 ];

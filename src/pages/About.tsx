@@ -36,7 +36,7 @@ function About() {
           transition={{ duration: 0.9 }}
           className="flex justify-center"
         >
-<div className="w-full max-w-sm rounded-3xl bg-gray-100 shadow-2xl p-3">
+<div className="w-full max-w-sm rounded-3xl bg-gray-100 shadow-2xl p-5">
   <div className="w-full aspect-square rounded-2xl overflow-hidden">
     <img
       src={heroImage}
