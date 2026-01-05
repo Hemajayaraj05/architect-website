@@ -61,9 +61,11 @@ function ContactUs() {
               transition={{ ...fadeUp.transition, delay: i * 0.1 }}
               className="glass-card rounded-2xl p-6 text-center shadow-xl"
             >
-              <h3 className="text-lg font-semibold text-amber-800 mb-2">
-                {item.title}
-              </h3>
+              <h3 className="flex items-center justify-center gap-2 text-lg font-semibold text-amber-800 mb-2">
+  {item.icon && <item.icon className="text-xl text-amber-700" />}
+  <span>{item.title}</span>
+</h3>
+
               <p className="text-gray-700 whitespace-pre-line text-sm">
                 {item.text}
               </p>
