@@ -32,9 +32,9 @@ function Navbar() {
   />
 
   <div className="text-lg md:text-xl font-bold">
-    <span className="text-amber-900">LA </span>
-    ARCHI
-    <span className="text-amber-500">TECT</span>
+    <span className="text-amber-700">LA ARCHI</span>
+    
+    <span className="text-amber-700">TECTS</span>
   </div>
 </div>
 
@@ -59,13 +59,13 @@ function Navbar() {
         
         <a
           href="tel:+916384284600"
-          className="hidden md:inline-block text-sm font-medium bg-amber-500 px-4 py-2 rounded-full text-white hover:bg-amber-600 transition"
+          className="hidden md:inline-block text-sm font-medium bg-[#A05A49] px-4 py-2 rounded-full text-white hover:bg-amber-600 transition"
         >
           Call Us
         </a>
 
         <button
-          className="md:hidden flex items-center justify-center p-2 bg-amber-500 rounded-md text-white text-2xl"
+          className="md:hidden flex items-center justify-center p-1 bg-amber-700 rounded-md text-white text-2xl"
           onClick={() => setMobileOpen(true)}
         >
           ☰
@@ -104,14 +104,14 @@ function Navbar() {
 
           <a
             href="tel:+919876543210"
-            className="mt-4 text-white bg-amber-500 px-4 py-2 rounded-full text-center hover:bg-amber-600 transition"
+            className="mt-4 text-white bg-[#A05A49] px-4 py-2 rounded-full text-center hover:bg-amber-600 transition"
           >
             Call Us
           </a>
         </div>
       </div>
 
-      {/* Overlay */}
+    
       {mobileOpen && (
         <div
           className="fixed inset-0 bg-black/30 z-40 md:hidden"

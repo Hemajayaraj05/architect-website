@@ -13,7 +13,7 @@ export const contactInfo = [
   {
     icon : IoIosContact,
     title: "Connect",
-    text: " 638 4284 600\n ajithmuthu.la@gmail.com \n 900 3851 246\n  austinkingsly.la@gmail.com",
+    text: " 638 4284 600\n  900 3851 246\n ajithmuthu.la@gmail.com \n   austinkingsly.la@gmail.com",
   },
   {
     icon: IoIosTime,

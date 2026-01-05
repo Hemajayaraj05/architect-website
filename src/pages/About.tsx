@@ -94,6 +94,26 @@ function About() {
         <div className="flex justify-center gap-20 flex-wrap">
          
           <motion.div
+            animate={{ y: [0, -16, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            className="flex flex-col items-center"
+          >
+            <div className="w-36 h-36 rounded-full overflow-hidden shadow-xl mb-4">
+              <img
+                src={founder2}
+                alt="Founder 2"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <h5 className="font-medium text-gray-900">
+              Ar Austin Kingsly D
+            </h5>
+            <p className="text-sm text-gray-600">
+              Managing Director
+            </p>
+          </motion.div>
+          
+          <motion.div
             animate={{ y: [0, -12, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             className="flex flex-col items-center"
@@ -114,25 +134,7 @@ function About() {
           </motion.div>
 
        
-          <motion.div
-            animate={{ y: [0, -16, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            className="flex flex-col items-center"
-          >
-            <div className="w-36 h-36 rounded-full overflow-hidden shadow-xl mb-4">
-              <img
-                src={founder2}
-                alt="Founder 2"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <h5 className="font-medium text-gray-900">
-              Ar Austin Kingsly D
-            </h5>
-            <p className="text-sm text-gray-600">
-              Managing Director
-            </p>
-          </motion.div>
+          
         </div>
       </div>
 
