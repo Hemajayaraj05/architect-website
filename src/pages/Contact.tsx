@@ -22,15 +22,45 @@ function ContactUs() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
 
-    setTimeout(() => {
-      setSubmitted(true);
-      setLoading(false);
-    }, 1500);
-  };
+  const [formData, setFormData] = useState({
+  name: "",
+  email: "",
+  phone: "",
+  date: "",
+  timeSlot: "",
+  meetingType: "",
+});
+const handleChange = (
+  e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+) => {
+  setFormData({ ...formData, [e.target.name]: e.target.value });
+};
+
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setLoading(true);
+
+  try {
+    const res = await fetch("backend url", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+
+    if (!res.ok) throw new Error("Failed");
+
+    setSubmitted(true);
+  } catch (err) {
+    alert("Something went wrong. Please try again.");
+  } finally {
+    setLoading(false);
+  }
+};
+
+
+
+
 
   return (
     <>
@@ -120,21 +150,38 @@ function ContactUs() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-6">
-                <input required placeholder="Full Name" className="glass-input" />
-                <input required type="email" placeholder="Email Address" className="glass-input" />
-                <input required type="tel" placeholder="Phone / WhatsApp Number" className="glass-input" />
-                <input required type="date" className="glass-input" />
+<input
+  required
+  name="name"
+  value={formData.name}
+  onChange={handleChange}
+  placeholder="Full Name"
+  className="glass-input"
+/>
 
-                <select required className="glass-input glass-select">
+                <input required type="email" placeholder="Email Address" value={formData.email}
+  onChange={handleChange}
+  
+  className="glass-input" />
+                <input required type="tel" placeholder="Phone / WhatsApp Number" value={formData.phone}
+  onChange={handleChange}
+  
+  className="glass-input"/>
+                <input required type="date" value={formData.date}
+  onChange={handleChange}
+
+  className="glass-input" />
+
+                <select required className="glass-input glass-select" value={formData.timeSlot} onChange={handleChange}>
                   <option value="" disabled>
-                    Preferred Time Slot
+                    Preferred Time slot
                   </option>
                   {timeSlots.map(slot => (
                     <option key={slot}>{slot}</option>
                   ))}
                 </select>
 
-                <select required className="glass-input glass-select">
+                <select required className="glass-input glass-select" value={formData.meetingType} onChange={handleChange}>
                   <option value="" disabled>
                     Preferred Meeting Type
                   </option>

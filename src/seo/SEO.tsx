@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+import { useEffect } from "react";
 
 type SEOProps = {
   title: string;
@@ -7,23 +7,64 @@ type SEOProps = {
 };
 
 const SEO = ({ title, description, url }: SEOProps) => {
-  return (
-    <Helmet>
-      <title>{title}</title>
-      <meta name="description" content={description} />
+  useEffect(() => {
+    // Title
+    document.title = title;
 
-      {/* Open Graph */}
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      <meta property="og:type" content="website" />
-      {url && <meta property="og:url" content={url} />}
+    // Description
+    let descTag = document.querySelector(
+      "meta[name='description']"
+    ) as HTMLMetaElement | null;
 
-      {/* Twitter */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
-    </Helmet>
-  );
+    if (!descTag) {
+      descTag = document.createElement("meta");
+      descTag.name = "description";
+      document.head.appendChild(descTag);
+    }
+    descTag.content = description;
+
+    // Open Graph
+    const setMeta = (property: string, content: string) => {
+      let tag = document.querySelector(
+        `meta[property='${property}']`
+      ) as HTMLMetaElement | null;
+
+      if (!tag) {
+        tag = document.createElement("meta");
+        tag.setAttribute("property", property);
+        document.head.appendChild(tag);
+      }
+      tag.content = content;
+    };
+
+    setMeta("og:title", title);
+    setMeta("og:description", description);
+    setMeta("og:type", "website");
+
+    if (url) {
+      setMeta("og:url", url);
+    }
+
+    // Twitter
+    const setTwitter = (name: string, content: string) => {
+      let tag = document.querySelector(
+        `meta[name='${name}']`
+      ) as HTMLMetaElement | null;
+
+      if (!tag) {
+        tag = document.createElement("meta");
+        tag.name = name;
+        document.head.appendChild(tag);
+      }
+      tag.content = content;
+    };
+
+    setTwitter("twitter:card", "summary_large_image");
+    setTwitter("twitter:title", title);
+    setTwitter("twitter:description", description);
+  }, [title, description, url]);
+
+  return null;
 };
 
 export default SEO;
