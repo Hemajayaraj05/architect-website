@@ -1,6 +1,7 @@
 import ProjectCard from "../components/ProjectCard";
 import { projects } from "../data/projects";
 import { useEffect } from "react";
+import SEO from "../seo/SEO";
 const Projects = () => {
     useEffect(() => {
   projects.forEach(project => {
@@ -9,6 +10,13 @@ const Projects = () => {
   });
 }, []);
   return (
+    <>
+    <SEO
+  title="Our Projects | Architectural Portfolio"
+  description="Explore our completed architectural and interior projects."
+  url="" //url
+/>
+
     <section
       className="bg-gray-200 md:pr-11 md:pl-11"
       id="projects"
@@ -25,8 +33,10 @@ const Projects = () => {
         {projects.map((project, idx) => (
           <ProjectCard key={idx} {...project} />
         ))}
+        
       </div>
     </section>
+    </>
   );
 };
 

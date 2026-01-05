@@ -1,7 +1,7 @@
 import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-
+import SEO from "../seo/SEO";
 
 
 import bg1 from "../assets/bishop/img15.jpg";
@@ -18,6 +18,12 @@ const navigate = useNavigate();
   const bgImages2 = [bg3, bg1, bg2];
 
   return (
+    <>
+     <SEO
+        title="Architectural Design Studio | Modern Spaces"
+        description="We design modern architectural, interior, and landscape spaces."
+        url="" //need to replace domain url
+      />
     <div className="relative w-full h-screen overflow-hidden">
      
       <Navbar />
@@ -106,6 +112,7 @@ const navigate = useNavigate();
         `}
       </style>
     </div>
+  </>
   );
 }
 

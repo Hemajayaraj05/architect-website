@@ -1,8 +1,8 @@
-// src/pages/ContactUs.tsx
+
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-
+import SEO from "../seo/SEO";
 import serv3 from "../assets/serv4.png";
 
 import GlassStyles from "../components/GlassyStyles";
@@ -33,6 +33,13 @@ function ContactUs() {
   };
 
   return (
+    <>
+    <SEO
+  title="Contact Us | Architectural Studio"
+  description="Get in touch with us for architectural and interior design services."
+  url="" //url
+/>
+
     <section id="connect" className="relative bg-gray-200 py-24">
       <GlassStyles />
 
@@ -152,6 +159,7 @@ function ContactUs() {
         </p>
       </div>
     </section>
+    </>
   );
 }
 

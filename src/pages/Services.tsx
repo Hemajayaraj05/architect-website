@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-
+import SEO from "../seo/SEO";
 import { services, stats } from "../data/services.data";
 import { cardVariants } from "../assets/animations/services.animations";
 import AnimatedCounter from "../components/AnimatedCounter";
@@ -12,6 +12,14 @@ const Services = () => {
   const statsInView = useInView(statsRef, { once: true, amount: 0.3 });
 
   return (
+    <>
+    <SEO
+  title="Our Services | Architecture & Interior Design"
+  description="Architectural design, interiors, landscape, and project management services."
+  url="" //url
+/>
+
+   
     <section id="expertise" className="pt-24 pb-24 bg-gray-200 md:px-12">
     
       <div className="max-w-7xl mx-auto px-6 mb-16">
@@ -93,6 +101,7 @@ const Services = () => {
         ))}
       </div>
     </section>
+     </>
   );
 };
 
