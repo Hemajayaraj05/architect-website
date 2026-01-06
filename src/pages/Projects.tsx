@@ -1,4 +1,4 @@
-import ProjectCard from "../components/ProjectCard";
+import ProjectCard from "../components/project/ProjectCard";
 import { projects } from "../data/projects";
 import { useEffect } from "react";
 import SEO from "../seo/SEO";
