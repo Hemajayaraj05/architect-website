@@ -1,4 +1,4 @@
-// src/data/services.data.ts
+
 
 import service1 from "../assets/bishop/img23.jpg";
 import service2 from "../assets/elevations/padur02.png";

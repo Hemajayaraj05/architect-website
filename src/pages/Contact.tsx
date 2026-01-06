@@ -42,7 +42,7 @@ function ContactUs() {
     setLoading(true);
 
     try {
-      const res = await fetch("backend url", {
+      const res = await fetch("http://localhost:5000/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -141,7 +141,7 @@ function ContactUs() {
 
               {submitted ? (
                 <div className="text-center py-12">
-                  <h3 className="text-2xl font-semibold text-white mb-3">
+                  <h3 className="text-2xl font-semibold text-amber-600 mb-3">
                     Details Submitted Successfully!
                   </h3>
                   <p className="text-gray-700">
@@ -160,20 +160,19 @@ function ContactUs() {
                   />
 
                   <input required type="email" placeholder="Email Address" value={formData.email}
-                    onChange={handleChange}
-
+                    onChange={handleChange} name="email"
                     className="glass-input" />
                   <input required type="tel" placeholder="Phone / WhatsApp Number" value={formData.phone}
-                    onChange={handleChange}
+                    onChange={handleChange} name="phone"
 
                     className="glass-input" />
                   <input required type="date" value={formData.date}
                     onChange={handleChange}
-
+                    name="date"
                     className="glass-input" />
 
-                  <select required className="glass-input glass-select" value={formData.timeSlot} onChange={handleChange}>
-                    <option value="" disabled>
+                  <select required className="glass-input glass-select" value={formData.timeSlot} onChange={handleChange} name="timeSlot"> 
+                    <option value="" disabled> 
                       Preferred Time slot
                     </option>
                     {timeSlots.map(slot => (
@@ -181,7 +180,7 @@ function ContactUs() {
                     ))}
                   </select>
 
-                  <select required className="glass-input glass-select" value={formData.meetingType} onChange={handleChange}>
+                  <select required className="glass-input glass-select" value={formData.meetingType} onChange={handleChange} name="meetingType">
                     <option value="" disabled>
                       Preferred Meeting Type
                     </option>

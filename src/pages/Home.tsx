@@ -5,8 +5,8 @@ import SEO from "../seo/SEO";
 
 
 import bg1 from "../assets/bishop/img15.jpg";
-import bg2 from "../assets/bishop/img35.jpg";
-import bg3 from "../assets/serv4.png";
+import bg2 from "../assets/bishop/img41.jpg";
+import bg3 from "../assets/bishop/img41.jpg";
 
 function Home() {
   const leftContentVariants = {
@@ -60,9 +60,9 @@ const navigate = useNavigate();
         animate="visible"
         variants={leftContentVariants}
       >
-        <p className="mb-6 text-white font-bold text-sm md:text-base lg:text-lg">
+        {/* <p className="mb-6 text-white font-bold text-sm md:text-base lg:text-lg">
           Where imagination meets structure, dreams become spaces 
-        </p>
+        </p> */}
 
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">
           Designing Spaces, <br /> Building Dreams
