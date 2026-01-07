@@ -5,8 +5,8 @@ import SEO from "../seo/SEO";
 
 
 import bg1 from "../assets/bishop/img15.jpg";
-import bg2 from "../assets/bishop/img41.jpg";
-import bg3 from "../assets/bishop/img41.jpg";
+import bg2 from "../assets/bishop/img15.jpg";
+import bg3 from "../assets/bishop/img15.jpg";
 
 function Home() {
   const leftContentVariants = {
