@@ -26,7 +26,7 @@ const Services = () => {
         <h2 className="text-4xl font-bold text-center text-amber-900">
           Our Services
         </h2>
-        <p className="text-center text-sm mt-3 text-gray-600 max-w-xl mx-auto">
+        <p className="text-center text-lg mt-3 text-gray-600 max-w-xl mx-auto">
           Thoughtfully designed solutions that shape spaces, experiences, and lifestyles.
         </p>
       </div>

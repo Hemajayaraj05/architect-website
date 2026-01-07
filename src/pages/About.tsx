@@ -39,17 +39,16 @@ const About: React.FC = () => {
       />
 
       <section id="about" className="bg-gray-100 py-28">
-        {/* Header */}
-        <div className="text-center mb-8 px-8">
-          <h2 className="text-4xl font-semibold text-amber-900 tracking-wide">
+      
+        <div className="text-center mb-8 px-7">
+          <h2 className="text-4xl font-bold text-amber-900 tracking-wide">
             About Us
           </h2>
-          <p className="mt-4 text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-4 text-gray-700 max-w-2xl mx-auto leading-relaxed text-lg">
             We design spaces that feel calm, timeless, and deeply human.
           </p>
         </div>
 
-        {/* Philosophy */}
         <div className="max-w-7xl mx-auto px-10 lg:px-20 grid md:grid-cols-2 gap-20 items-center">
           <motion.div
             initial={{ opacity: 0, x: -60 }}

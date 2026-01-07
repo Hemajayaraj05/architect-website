@@ -32,7 +32,7 @@ const ContactUs: React.FC = () => {
             <h1 className="text-4xl font-bold text-amber-900">
               Contact Us
             </h1>
-            <p className="mt-3 text-gray-700 text-sm">
+            <p className="mt-3 text-gray-700 text-lg">
               Let’s design something extraordinary together.
             </p>
           </motion.div>
