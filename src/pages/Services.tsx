@@ -6,6 +6,7 @@ import SEO from "../seo/SEO";
 import { services, stats } from "../data/services.data";
 import { cardVariants } from "../assets/animations/services.animations";
 import AnimatedCounter from "../components/AnimatedCounter";
+import DesignProcess from "../components/DesignProcess";
 
 const Services = () => {
   const statsRef = useRef<HTMLDivElement | null>(null);
@@ -100,6 +101,7 @@ const Services = () => {
           </div>
         ))}
       </div>
+      <DesignProcess/>
     </section>
      </>
   );
