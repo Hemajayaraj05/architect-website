@@ -37,15 +37,17 @@ const ContactUs: React.FC = () => {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-6">
+          <div className="grid md:grid-cols-3 gap-8 mb-6 ">
             {contactInfo.map((item, i) => (
-              <ContactInfoCard
+              <ContactInfoCard 
                 key={i}
                 index={i}
                 title={item.title}
                 text={item.text}
                 icon={item.icon}
+                
               />
+              
             ))}
           </div>
 
