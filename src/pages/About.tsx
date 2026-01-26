@@ -95,7 +95,7 @@ const About: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Founders */}
+     
         <div className="mt-28">
           <SectionHeading title="Meet the Minds Behind the Design" />
 
@@ -115,7 +115,7 @@ const About: React.FC = () => {
           </div>
         </div>
 
-        {/* Studio Images */}
+    
         <div className="mt-32">
           <SectionHeading title="Inside Our Studio" />
 
