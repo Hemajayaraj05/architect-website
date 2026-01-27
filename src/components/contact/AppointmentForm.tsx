@@ -15,7 +15,7 @@ interface AppointmentFormProps {
   timeSlots: string[];
   meetingTypes: string[];
 }
-const VITE_API_URL="https://architect-website-backend.onrender.com";
+
 
 const AppointmentForm: React.FC<AppointmentFormProps> = ({
   timeSlots,
@@ -40,28 +40,38 @@ const AppointmentForm: React.FC<AppointmentFormProps> = ({
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
+  e.preventDefault();
+  setLoading(true);
 
-    try {
-     const res = await fetch(
-  `${VITE_API_URL}/api/contact`,
-  {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(formData),
-  }
-);
+  try {
+    const res = await fetch(
+      "https://architect-website-backend.onrender.com/api/contact",
+      {
+        method: "POST",
+        mode: "cors",              // 🔴 REQUIRED
+        credentials: "omit",       // 🔴 IMPORTANT on Vercel
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+    );
 
-
-      if (!res.ok) throw new Error("Failed");
-      setSubmitted(true);
-    } catch {
-      alert("Something went wrong. Please try again.");
-    } finally {
-      setLoading(false);
+    if (!res.ok) {
+      const text = await res.text();
+      console.error("Server error:", text);
+      throw new Error("Request failed");
     }
-  };
+
+    setSubmitted(true);
+  } catch (err) {
+    console.error(err);
+    alert("Unable to submit. Please try again later.");
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <motion.div
