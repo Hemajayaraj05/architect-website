@@ -1,92 +1,98 @@
-import { FaHandshake, FaRocket } from "react-icons/fa";
-import { TbBuildingSkyscraper } from "react-icons/tb";
+import {
+  FaHandshake,
+  FaDraftingCompass,
+  FaMapMarkedAlt,
+  FaTools,
+  FaCheckCircle,
+} from "react-icons/fa";
 import { motion } from "framer-motion";
 
-const processSteps = [
+const steps = [
   {
     title: "Consultation",
-    description:
-      "Understanding client requirements, site conditions, and vision.",
+    description: "Understanding vision, lifestyle needs, and budget alignment.",
     icon: FaHandshake,
   },
   {
-    title: "Design Development",
-    description:
-      "Concept planning, visualization, materials, and detailing.",
-    icon: TbBuildingSkyscraper,
+    title: "Site Analysis",
+    description: "Studying site conditions, regulations, and context.",
+    icon: FaMapMarkedAlt,
+  },
+  {
+    title: "Concept Design",
+    description: "Layouts, massing, and overall design intent.",
+    icon: FaDraftingCompass,
     highlight: true,
   },
   {
-    title: "Execution",
-    description:
-      "Coordinated execution with quality control till completion.",
-    icon: FaRocket,
+    title: "Execution Planning",
+    description: "Coordination, timelines, and quality control.",
+    icon: FaTools,
+  },
+  {
+    title: "Project Delivery",
+    description: "Careful execution with refined detailing.",
+    icon: FaCheckCircle,
   },
 ];
 
 const DesignProcess = () => {
   return (
-    <section className="py-24 bg-gray-200">
-    
-      <div className="max-w-7xl mx-auto px-6 text-center mb-16">
-        <h2 className="text-4xl font-bold text-amber-900">
-          Our Design Process
-        </h2>
-        <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
-          A calm, structured approach that guides every project from idea to reality.
-        </p>
-      </div>
+    <section className="py-28 bg-gray-200">
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Header */}
+        <div className="mb-24 text-center">
+          <h2 className="text-2xl font-medium text-amber-900 tracking-tight">
+            Our Design Journey
+          </h2>
+          <p className="mt-4 text-gray-600 max-w-xl mx-auto">
+            A deliberate and structured approach to shaping meaningful spaces.
+          </p>
+        </div>
 
-  
-      <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-16">
-        {processSteps.map((step, index) => {
-          const Icon = step.icon;
+        {/* Process */}
+        <div className="relative max-w-6xl mx-auto">
+          {/* Line (desktop only) */}
+          <div className="hidden md:block absolute top-6 left-0 right-0 h-px bg-gray-400" />
 
-          return (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ y: -6 }}
-              transition={{ delay: index * 0.2, duration: 0.5 }}
-              viewport={{ once: true }}
-              className="flex flex-col items-center text-center relative group"
-            >
-           
-              <div className="absolute -z-10 w-28 h-28 rounded-full bg-amber-100/40 blur-xl" />
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-14">
+            {steps.map((step, index) => {
+              const Icon = step.icon;
 
-         
-              <div
-                className={`relative w-20 h-20 rounded-full flex items-center justify-center
-                  backdrop-blur-md border border-white/60 shadow-xl
-                  ${
-                    step.highlight
-                      ? "bg-white/80 scale-110"
-                      : "bg-white/80"
-                  }
-                `}
-              >
-                <Icon className="text-3xl text-amber-700" />
-              </div>
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.35, delay: index * 0.07 }}
+                  className="flex flex-col items-center text-center relative"
+                >
+                  {/* Dot */}
+                  <div
+                    className={`w-12 h-12 rounded-full flex items-center justify-center mb-6 bg-white border
+                      ${
+                        step.highlight
+                          ? "border-gray-700"
+                          : "border-gray-300"
+                      }
+                    `}
+                  >
+                    <Icon className="text-sm text-gray-700" />
+                  </div>
 
-            
-              <div className="w-px h-12 my-4 bg-linear-to-b from-amber-300 via-gray-400 to-transparent" />
+                  <h3 className="text-sm font-medium text-gray-900 tracking-wide">
+                    {step.title}
+                  </h3>
 
-            
-              <div
-                className="bg-white rounded-2xl p-6 shadow-md max-w-sm
-                           transition-all duration-300 group-hover:shadow-xl"
-              >
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  {step.title}
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {step.description}
-                </p>
-              </div>
-            </motion.div>
-          );
-        })}
+                  <p className="mt-2 text-sm text-gray-600 leading-relaxed max-w-56">
+                    {step.description}
+                  </p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </section>
   );

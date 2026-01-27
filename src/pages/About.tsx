@@ -38,7 +38,7 @@ const About: React.FC = () => {
         url=""
       />
 
-      <section id="about" className="bg-gray-100 py-28">
+      <section id="about" className="bg-gray-200 py-28">
       
         <div className="text-center mb-8 px-7">
           <h2 className="text-4xl font-bold text-amber-900 tracking-wide">
@@ -57,7 +57,7 @@ const About: React.FC = () => {
             transition={{ duration: 0.9 }}
             className="flex justify-center"
           >
-            <div className="w-full max-w-sm rounded-3xl bg-gray-100 shadow-2xl p-5">
+            <div className="w-full max-w-sm rounded-3xl bg-gray-150 shadow-2xl p-5">
               <div className="w-full aspect-square rounded-2xl overflow-hidden">
                 <img
                   src={heroImage}
@@ -75,7 +75,7 @@ const About: React.FC = () => {
             transition={{ duration: 0.9 }}
             className="max-w-xl"
           >
-            <p className="text-sm uppercase tracking-widest text-amber-700 mb-4 text-center">
+            <p className="text-lg uppercase tracking-widest text-amber-700 mb-4 text-center">
               Our Philosophy
             </p>
 
@@ -83,12 +83,12 @@ const About: React.FC = () => {
               Crafting Inspired Spaces
             </h3>
 
-            <p className="text-gray-700 leading-8 mb-6">
+            <p className="text-gray-700 leading-8 mb-6 text-center">
               We are a multidisciplinary architecture and design studio creating
               thoughtful environments for living, working, and gathering.
             </p>
 
-            <p className="text-gray-700 leading-8">
+            <p className="text-gray-700 leading-8 text-center">
               Our approach blends functionality, sustainability, and emotion —
               shaping spaces that feel intentional, efficient, and enduring.
             </p>
