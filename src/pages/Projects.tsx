@@ -41,7 +41,7 @@ const Projects = () => {
 
       <section className="bg-gray-200 md:pr-11 md:pl-11" id="projects">
         <div className="max-w-7xl mx-auto px-6 py-16 text-center">
-          <h2 className="text-4xl font-bold text-amber-900 mb-2 pt-9">
+          <h2 className="text-4xl font-light text-amber-900 mb-2 pt-9 tracking-tighter">
             Our Projects
           </h2>
           <p className="text-gray-700 text-lg">

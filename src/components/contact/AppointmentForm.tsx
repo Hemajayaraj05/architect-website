@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { scaleIn } from "../../assets/animations/contact.animations";
-import serv3 from "../../assets/serv4.png";
 
 interface FormData {
   name: string;
@@ -21,8 +20,8 @@ const AppointmentForm: React.FC<AppointmentFormProps> = ({
   timeSlots,
   meetingTypes,
 }) => {
-  const [submitted, setSubmitted] = useState<boolean>(false);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -44,11 +43,15 @@ const AppointmentForm: React.FC<AppointmentFormProps> = ({
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:5000/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+     const res = await fetch(
+  `${import.meta.env.VITE_API_URL}/api/contact`,
+  {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(formData),
+  }
+);
+
 
       if (!res.ok) throw new Error("Failed");
       setSubmitted(true);
@@ -62,116 +65,117 @@ const AppointmentForm: React.FC<AppointmentFormProps> = ({
   return (
     <motion.div
       {...scaleIn}
-      className="relative max-w-4xl mx-auto rounded-3xl shadow-2xl overflow-hidden"
+      className="max-w-4xl mx-auto bg-gray-100 rounded-3xl border border-gray-300 p-12"
     >
-      <div
-        className="absolute inset-0 bg-cover bg-center blur-sm"
-        style={{ backgroundImage: `url(${serv3})` }}
-      />
+      {/* Header */}
+      <div className="text-center mb-12">
+        <h2 className="text-3xl font-light text-amber-900 tracking-tight">
+          Book an Appointment
+        </h2>
+        <p className="text-gray-600 text-sm mt-3 max-w-md mx-auto">
+          Share your details and we’ll connect with you to discuss your project.
+        </p>
+      </div>
 
-      <div className="relative bg-white/20 backdrop-blur-xl rounded-3xl p-10 border border-white/30 shadow-2xl">
-        <div className="text-center mb-6">
-          <h2 className="text-3xl font-bold text-amber-900">
-            Book an Appointment
-          </h2>
-          <p className="text-gray-700 text-sm mt-2">
-            Fill in your details and we will get back to you.
+      {submitted ? (
+        <div className="text-center py-16">
+          <h3 className="text-xl font-medium text-amber-800 mb-3">
+            Thank you for reaching out
+          </h3>
+          <p className="text-gray-600 text-sm">
+            Our team will get back to you shortly.
           </p>
         </div>
+      ) : (
+        <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-8">
+          <input
+            required
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="Full Name"
+            className="border-b border-gray-400 bg-transparent py-3 text-sm
+                       focus:outline-none focus:border-amber-800"
+          />
 
-        {submitted ? (
-          <div className="text-center py-12">
-            <h3 className="text-2xl font-semibold text-amber-600 mb-3">
-              Details Submitted Successfully!
-            </h3>
-            <p className="text-gray-700">
-              Our team will contact you shortly.
-            </p>
-          </div>
-        ) : (
-          <form
-            onSubmit={handleSubmit}
-            className="grid md:grid-cols-2 gap-6"
+          <input
+            required
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Email Address"
+            className="border-b border-gray-400 bg-transparent py-3 text-sm
+                       focus:outline-none focus:border-amber-800"
+          />
+
+          <input
+            required
+            type="tel"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            placeholder="Phone / WhatsApp Number"
+            className="border-b border-gray-400 bg-transparent py-3 text-sm
+                       focus:outline-none focus:border-amber-800"
+          />
+
+          <input
+            required
+            type="date"
+            name="date"
+            value={formData.date}
+            onChange={handleChange}
+            className="border-b border-gray-400 bg-transparent py-3 text-sm
+                       focus:outline-none focus:border-amber-800"
+          />
+
+          <select
+            required
+            name="timeSlot"
+            value={formData.timeSlot}
+            onChange={handleChange}
+            className="border-b border-gray-400 bg-transparent py-3 text-sm
+                       focus:outline-none focus:border-amber-800"
           >
-            <input
-              required
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="Full Name"
-              className="glass-input"
-            />
+            <option value="" disabled>
+              Preferred Time Slot
+            </option>
+            {timeSlots.map((slot) => (
+              <option key={slot}>{slot}</option>
+            ))}
+          </select>
 
-            <input
-              required
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Email Address"
-              className="glass-input"
-            />
+          <select
+            required
+            name="meetingType"
+            value={formData.meetingType}
+            onChange={handleChange}
+            className="border-b border-gray-400 bg-transparent py-3 text-sm
+                       focus:outline-none focus:border-amber-800"
+          >
+            <option value="" disabled>
+              Preferred Meeting Type
+            </option>
+            {meetingTypes.map((type) => (
+              <option key={type}>{type}</option>
+            ))}
+          </select>
 
-            <input
-              required
-              type="tel"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              placeholder="Phone / WhatsApp Number"
-              className="glass-input"
-            />
-
-            <input
-              required
-              type="date"
-              name="date"
-              value={formData.date}
-              onChange={handleChange}
-              className="glass-input"
-            />
-
-            <select
-              required
-              name="timeSlot"
-              value={formData.timeSlot}
-              onChange={handleChange}
-              className="glass-input glass-select"
+          {/* Button */}
+          <div className="md:col-span-2 flex justify-center mt-12">
+            <button
+              disabled={loading}
+              className="px-10 py-3 border border-amber-900 text-amber-900
+                         rounded-full text-sm tracking-wide
+                         hover:bg-amber-900 hover:text-white transition
+                         disabled:opacity-50"
             >
-              <option value="" disabled>
-                Preferred Time Slot
-              </option>
-              {timeSlots.map((slot) => (
-                <option key={slot}>{slot}</option>
-              ))}
-            </select>
-
-            <select
-              required
-              name="meetingType"
-              value={formData.meetingType}
-              onChange={handleChange}
-              className="glass-input glass-select"
-            >
-              <option value="" disabled>
-                Preferred Meeting Type
-              </option>
-              {meetingTypes.map((type) => (
-                <option key={type}>{type}</option>
-              ))}
-            </select>
-
-            <div className="md:col-span-2 flex justify-center mt-4">
-              <button
-                disabled={loading}
-                className="w-48 bg-amber-900 text-white py-3 rounded-xl font-medium hover:bg-amber-700 transition disabled:opacity-50 shadow-lg"
-              >
-                {loading ? "Submitting..." : "Submit Details"}
-              </button>
-            </div>
-          </form>
-        )}
-      </div>
+              {loading ? "Submitting..." : "Submit"}
+            </button>
+          </div>
+        </form>
+      )}
     </motion.div>
   );
 };

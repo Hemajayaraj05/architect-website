@@ -24,7 +24,7 @@ const Services = () => {
     <section id="expertise" className="pt-24 pb-24 bg-gray-200 md:px-12">
     
       <div className="max-w-7xl mx-auto px-6 mb-16">
-        <h2 className="text-4xl font-bold text-center text-amber-900">
+        <h2 className="text-4xl font-light text-center text-amber-900 tracking-tighter">
           Our Services
         </h2>
         <p className="text-center text-lg mt-3 text-gray-600 max-w-xl mx-auto">

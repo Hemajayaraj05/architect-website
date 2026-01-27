@@ -41,7 +41,7 @@ const About: React.FC = () => {
       <section id="about" className="bg-gray-200 py-28">
       
         <div className="text-center mb-8 px-7">
-          <h2 className="text-4xl font-bold text-amber-900 tracking-wide">
+          <h2 className="text-4xl font-light text-amber-900 tracking-tight">
             About Us
           </h2>
           <p className="mt-4 text-gray-700 max-w-2xl mx-auto leading-relaxed text-lg">
