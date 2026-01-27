@@ -15,6 +15,7 @@ interface AppointmentFormProps {
   timeSlots: string[];
   meetingTypes: string[];
 }
+const VITE_API_URL="https://architect-website-backend.onrender.com";
 
 const AppointmentForm: React.FC<AppointmentFormProps> = ({
   timeSlots,
@@ -44,7 +45,7 @@ const AppointmentForm: React.FC<AppointmentFormProps> = ({
 
     try {
      const res = await fetch(
-  `${import.meta.env.VITE_API_URL}/api/contact`,
+  `${VITE_API_URL}/api/contact`,
   {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -126,6 +127,7 @@ const AppointmentForm: React.FC<AppointmentFormProps> = ({
             name="date"
             value={formData.date}
             onChange={handleChange}
+            placeholder="Preferred date"
             className="border-b border-gray-400 bg-transparent py-3 text-sm
                        focus:outline-none focus:border-amber-800"
           />

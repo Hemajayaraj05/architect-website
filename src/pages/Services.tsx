@@ -81,7 +81,7 @@ const Services = () => {
         ))}
       </div>
 
-     
+      <DesignProcess/>
       <div
         ref={statsRef}
         className="max-w-7xl mx-auto px-6 mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
@@ -101,7 +101,7 @@ const Services = () => {
           </div>
         ))}
       </div>
-      <DesignProcess/>
+     
     </section>
      </>
   );
