@@ -1,9 +1,9 @@
+// pages/Projects.tsx (or wherever your page is)
+
 import { useEffect, useState } from "react";
 import ProjectCard from "../components/project/ProjectCard";
-
 import SEO from "../seo/SEO";
-import { fetchProjects } from "../api/projects.api";
-import type{ Project } from "../api/projects.api";
+import { fetchProjects, type Project } from "../api/projects.api";
 
 const Projects = () => {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -13,14 +13,10 @@ const Projects = () => {
     const loadProjects = async () => {
       try {
         const data = await fetchProjects();
-        setProjects(data);
+        const sortedProjects = data.sort((a, b) => b.id - a.id);
+        
 
-        data.forEach((project) => {
-          if (project.images?.[0]) {
-            const img = new Image();
-            img.src = project.images[0].url;
-          }
-        });
+        setProjects(sortedProjects);
       } catch (err) {
         console.error("Failed to load projects", err);
       } finally {
@@ -60,7 +56,7 @@ const Projects = () => {
                 key={project.id}
                 title={project.title}
                 location={project.location}
-                images={project.images || []} 
+                images={project.images || []} // pass backend images directly
               />
             ))}
           </div>
