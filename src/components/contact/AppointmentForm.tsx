@@ -48,8 +48,8 @@ const AppointmentForm: React.FC<AppointmentFormProps> = ({
       "https://architect-website-backend.onrender.com/api/contact",
       {
         method: "POST",
-        mode: "cors",              // 🔴 REQUIRED
-        credentials: "omit",       // 🔴 IMPORTANT on Vercel
+        mode: "cors",              
+        credentials: "omit",       
         headers: {
           "Content-Type": "application/json",
           "Accept": "application/json",
