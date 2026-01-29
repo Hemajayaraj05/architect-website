@@ -3,6 +3,7 @@
 import { FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa";
 import { IoHome } from "react-icons/io5";
 import { IoIosContact,IoIosTime } from "react-icons/io";
+import { FaFacebookF } from "react-icons/fa";
 
 export const contactInfo = [
   {
@@ -33,11 +34,16 @@ export const socialLinks = [
     color: "#0077B5",
     link: "#",
   },
-  {
-    icon: FaTwitter,
-    color: "#1DA1F2",
-    link: "#",
-  },
+    {
+      icon: FaTwitter,
+      color: "#1DA1F2",
+      link: "#",
+    },
+    {
+      icon: FaFacebookF,
+      color: "#1877F2",
+      link: "#",  
+    }
 ];
 
 export const timeSlots = [

@@ -1,4 +1,4 @@
-// pages/Projects.tsx (or wherever your page is)
+
 
 import { useEffect, useState } from "react";
 import ProjectCard from "../components/project/ProjectCard";
@@ -56,7 +56,7 @@ const Projects = () => {
                 key={project.id}
                 title={project.title}
                 location={project.location}
-                images={project.images || []} // pass backend images directly
+                images={project.images || []} 
               />
             ))}
           </div>

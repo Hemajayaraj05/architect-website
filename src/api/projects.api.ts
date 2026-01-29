@@ -1,9 +1,9 @@
-// api/projects.api.ts
+
 
 export type ProjectImage = {
   id: number;
-  secure_url: string;   // backend property
-  public_id: string;    // backend property
+  secure_url: string;   
+  public_id: string;    
 };
 
 export type Project = {

@@ -42,10 +42,11 @@ const AppointmentForm: React.FC<AppointmentFormProps> = ({
   const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
   setLoading(true);
-
+const API="https://architect-website-backend.onrender.com/api/contact";
+//const API="http://localhost:5000/api/contact";
   try {
     const res = await fetch(
-      "https://architect-website-backend.onrender.com/api/contact",
+      API,
       {
         method: "POST",
         mode: "cors",              
@@ -78,7 +79,7 @@ const AppointmentForm: React.FC<AppointmentFormProps> = ({
       {...scaleIn}
       className="max-w-4xl mx-auto bg-gray-100 rounded-3xl border border-gray-300 p-12"
     >
-      {/* Header */}
+     
       <div className="text-center mb-12">
         <h2 className="text-3xl font-light text-amber-900 tracking-tight">
           Book an Appointment
