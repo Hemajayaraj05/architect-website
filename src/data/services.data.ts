@@ -1,54 +1,47 @@
-
-
-import service1 from "../assets/bishop/img23.jpg";
-import service2 from "../assets/elevations/padur02.png";
-import service3 from "../assets/arch.png";
-import service4 from "../assets/serv4.png";
-
 export type Service = {
   title: string;
   subtitle: string;
   description: string;
   tags: string[];
-  image: string;
+  type: "architecture" | "interior" | "management" | "3d";
   direction: "left" | "right";
 };
 
 export const services: Service[] = [
   {
     title: "Architectural Design",
-    subtitle: "Professional Design",
+    subtitle: "Concept to Completion",
     description:
-      "We create stunning residential, commercial, and institutional spaces tailored to your vision.",
-    tags: ["Residential", "Commercial", "Institutional"],
-    image: service1,
+      "We craft iconic residential and commercial structures blending innovation and structural precision.",
+    tags: ["Concept Design", "Elevation Planning", "Urban Design"],
+    type: "architecture",
     direction: "left",
   },
   {
     title: "Interior & Landscape Design",
-    subtitle: "Sustainable & Modern",
+    subtitle: "Timeless & Sustainable",
     description:
-      "From interiors to landscapes, we blend creativity and functionality for beautiful, practical spaces.",
-    tags: ["Interiors", "Landscape", "Sustainable"],
-    image: service2,
+      "We design immersive interiors and natural landscapes that enhance spatial experience.",
+    tags: ["Luxury Interiors", "Landscape Design", "Eco Planning"],
+    type: "interior",
     direction: "right",
   },
   {
     title: "Project Management",
-    subtitle: "Project Execution",
+    subtitle: "Structured Execution",
     description:
-      "We manage timelines, budgets, and execution to ensure smooth and timely project delivery.",
+      "We manage budgets, timelines, vendors, and site supervision to ensure flawless delivery.",
     tags: ["Planning", "Execution", "Supervision"],
-    image: service3,
+    type: "management",
     direction: "left",
   },
   {
     title: "3D Modeling & Rendering",
-    subtitle: "Visualization & Planning",
+    subtitle: "Visual Precision",
     description:
-      "High-quality 3D visuals and renderings to help you visualize your project before construction.",
-    tags: ["3D Views", "Renderings", "Walkthroughs"],
-    image: service4,
+      "High-end 3D renderings and walkthroughs to visualize spaces before construction.",
+    tags: ["3D Views", "Rendering", "Walkthrough"],
+    type: "3d",
     direction: "right",
   },
 ];

@@ -1,4 +1,4 @@
-// src/components/AnimatedCounter.tsx
+
 
 import { useEffect, useState } from "react";
 

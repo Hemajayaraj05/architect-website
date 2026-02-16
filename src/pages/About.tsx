@@ -17,6 +17,7 @@ import company8 from "../assets/aboutimage/img38.jpg";
 import FounderCard from "../components/about/FounderCard";
 import FloatingImageCard from "../components/about/FloatingImageCard";
 import SectionHeading from "../components/about/SectionHeading";
+// import ReviewCard from "../components/about/ReviewCard";
 
 const studioImages: string[] = [
   company1,
@@ -29,6 +30,33 @@ const studioImages: string[] = [
   company8,
 ];
 
+const reviews = [
+  {
+    name: "Sarah Mitchell",
+    role: "Property Developer",
+    review: "LA Architects transformed our vision into reality. Their attention to detail and innovative approach resulted in a stunning space that exceeds all expectations.",
+    rating: 5,
+  },
+  {
+    name: "James Cooper",
+    role: "CEO, Design Co.",
+    review: "Working with this team was seamless. They understood our requirements perfectly and delivered an exceptional design that perfectly balances form and function.",
+    rating: 5,
+  },
+  {
+    name: "Emily Rodriguez",
+    role: "Interior Designer",
+    review: "Their architectural expertise complemented our interior designs beautifully. A pleasure to collaborate with such talented professionals.",
+    rating: 5,
+  },
+  {
+    name: "Michael Zhang",
+    role: "Real Estate Manager",
+    review: "Outstanding quality and professionalism. The project was completed on time and within budget. Highly recommended for any architectural project.",
+    rating: 5,
+  },
+];
+
 const About: React.FC = () => {
   return (
     <>
@@ -39,7 +67,7 @@ const About: React.FC = () => {
       />
 
       <section id="about" className="bg-gray-200 py-28">
-      
+
         <div className="text-center mb-8 px-7">
           <h2 className="text-4xl font-light text-amber-900 tracking-tight">
             About Us
@@ -92,19 +120,23 @@ const About: React.FC = () => {
               Our approach blends functionality, sustainability, and emotion —
               shaping spaces that feel intentional, efficient, and enduring.
             </p>
+
+            <p className="text-gray-700 leading-8 text-center">
+              We strive to create timeless spaces that inspire connection,
+              innovation, and a lasting positive impact on communities.
+            </p>
           </motion.div>
         </div>
 
-     
+
         <div className="mt-28">
           <SectionHeading title="Meet the Minds Behind the Design" />
 
           <div className="flex justify-center gap-20 flex-wrap">
             <FounderCard
               image={founder2}
-              name="Ar Austin Kingsly D"
+              name="Ar Austin kingsley"
               role="Managing Director"
-              duration={5}
             />
 
             <FounderCard
@@ -115,7 +147,7 @@ const About: React.FC = () => {
           </div>
         </div>
 
-    
+
         <div className="mt-32">
           <SectionHeading title="Inside Our Studio" />
 
@@ -128,6 +160,33 @@ const About: React.FC = () => {
               />
             ))}
           </div>
+        </div>
+
+        {/* Reviews Section */}
+        <div className="mt-32">
+          <SectionHeading title="What Our Clients Say" />
+
+          {/* <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-8">
+            {reviews.map((review, index) => (
+              <ReviewCard
+                key={index}
+                name={review.name}
+                role={review.role}
+                review={review.review}
+                rating={review.rating}
+                index={index}
+              />
+            ))}
+          </div> */}
+
+          {/* Bottom Accent Line */}
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: "100%" }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="h-1 bg-gradient-to-r from-amber-400 via-amber-600 to-amber-400 max-w-sm mx-auto mt-16 rounded-full"
+          />
         </div>
       </section>
     </>

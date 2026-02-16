@@ -1,9 +1,11 @@
 import React, { useRef, useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
-// Updated type to match backend
+
 export type ProjectImage = {
   id: number;
-  secure_url: string; // backend provides this
+  secure_url: string;
   public_id: string;
 };
 
@@ -53,7 +55,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, location, images }) =>
           {images.map((img) => (
             <img
               key={img.id}
-              src={img.secure_url} // <-- changed to secure_url
+              src={img.secure_url} 
               alt={`${title}-${img.id}`}
               className="shrink-0 w-full h-full object-cover"
             />

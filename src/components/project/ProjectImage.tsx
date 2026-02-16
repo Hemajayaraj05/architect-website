@@ -19,7 +19,7 @@ const ProjectImage = ({ src, alt }: ProjectImageProps) => {
         <img
           src={src}
           alt={alt}
-          loading="eager"
+          loading="lazy"
           decoding="async"
           onLoad={() => setLoaded(true)}
           onError={() => setError(true)}
