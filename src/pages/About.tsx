@@ -30,33 +30,6 @@ const studioImages: string[] = [
   company8,
 ];
 
-const reviews = [
-  {
-    name: "Sarah Mitchell",
-    role: "Property Developer",
-    review: "LA Architects transformed our vision into reality. Their attention to detail and innovative approach resulted in a stunning space that exceeds all expectations.",
-    rating: 5,
-  },
-  {
-    name: "James Cooper",
-    role: "CEO, Design Co.",
-    review: "Working with this team was seamless. They understood our requirements perfectly and delivered an exceptional design that perfectly balances form and function.",
-    rating: 5,
-  },
-  {
-    name: "Emily Rodriguez",
-    role: "Interior Designer",
-    review: "Their architectural expertise complemented our interior designs beautifully. A pleasure to collaborate with such talented professionals.",
-    rating: 5,
-  },
-  {
-    name: "Michael Zhang",
-    role: "Real Estate Manager",
-    review: "Outstanding quality and professionalism. The project was completed on time and within budget. Highly recommended for any architectural project.",
-    rating: 5,
-  },
-];
-
 const About: React.FC = () => {
   return (
     <>
