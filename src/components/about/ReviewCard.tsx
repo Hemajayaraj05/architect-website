@@ -10,13 +10,13 @@ interface ReviewCardProps {
   index: number;
 }
 
-const ReviewCard: React.FC<ReviewCardProps> = ({ 
-  clientName, 
-  projectName, 
-  place, 
-  review, 
-  stars, 
-  index 
+const ReviewCard: React.FC<ReviewCardProps> = ({
+  clientName,
+  projectName,
+  place,
+  review,
+  stars,
+  index,
 }) => {
   return (
     <motion.div
@@ -24,64 +24,69 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7, delay: index * 0.15 }}
-      className="group relative bg-gradient-to-br from-white/90 to-white/70 backdrop-blur-xl border border-amber-100/50 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden"
+      className="group relative overflow-hidden rounded-[28px] border border-amber-100/70 bg-linear-to-br from-amber-50/80 via-white/90 to-white/70 p-8 shadow-[0_22px_60px_-30px_rgba(120,53,15,0.45)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_28px_70px_-28px_rgba(120,53,15,0.55)]"
     >
-      {/* Decorative Background Elements */}
-      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-amber-400/10 to-amber-600/5 rounded-full blur-3xl -z-10 group-hover:scale-150 transition-transform duration-700" />
-      <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-amber-300/10 to-transparent rounded-full blur-2xl -z-10 group-hover:scale-150 transition-transform duration-700" />
+      <div className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-amber-500 via-yellow-400 to-amber-600" />
+      <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-linear-to-br from-amber-300/20 to-amber-600/5 blur-3xl transition-transform duration-700 group-hover:scale-125" />
+      <div className="absolute -left-10 -bottom-12 h-40 w-40 rounded-full bg-linear-to-tr from-amber-200/20 to-transparent blur-3xl transition-transform duration-700 group-hover:scale-125" />
 
-      {/* Rating Stars */}
-      <div className="flex gap-1 mb-6">
-        {[...Array(5)].map((_, i) => (
-          <Star
-            key={i}
-            size={20}
-            className={`${
-              i < stars 
-                ? "fill-amber-500 text-amber-500" 
-                : "fill-gray-200 text-gray-200"
-            } transition-all duration-300`}
-          />
-        ))}
+      <div className="mb-7 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          {[...Array(5)].map((_, i) => (
+            <Star
+              key={i}
+              size={18}
+              className={`${
+                i < stars
+                  ? "fill-amber-500 text-amber-500"
+                  : "fill-amber-100 text-amber-100"
+              } transition-all duration-300`}
+            />
+          ))}
+        </div>
+        <div className="flex items-center gap-2 rounded-full bg-amber-50 px-3 py-1 text-sm font-semibold text-amber-700">
+          <span className="text-base">{stars}.0</span>
+          <span className="text-amber-400">/</span>
+          <span className="text-xs text-amber-500">5</span>
+        </div>
       </div>
 
-      {/* Review Text */}
       <div className="mb-8">
-        <p className="text-gray-700 leading-relaxed text-base md:text-lg italic relative">
-          <span className="text-6xl text-amber-400/30 absolute -top-4 -left-2 font-serif">"</span>
-          <span className="relative z-10">{review}</span>
-          <span className="text-6xl text-amber-400/30 font-serif">"</span>
+        <p className="relative text-balance text-base leading-relaxed text-slate-700 md:text-lg">
+          <span className="absolute -left-2 -top-4 text-6xl font-serif text-amber-400/30">
+            "
+          </span>
+          <span className="relative z-10 italic">{review}</span>
+          <span className="text-5xl font-serif text-amber-400/30">"</span>
         </p>
       </div>
 
-      {/* Client Info */}
-      <div className="space-y-3 pt-6 border-t border-amber-100/50">
-        {/* Client Name with Avatar */}
-        <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-white font-bold text-lg shadow-md">
+      <div className="space-y-4 border-t border-amber-100/70 pt-6">
+        <div className="flex items-center gap-4">
+          <div className="grid h-12 w-12 place-items-center rounded-full bg-linear-to-br from-amber-400 to-amber-600 text-lg font-bold text-white shadow-md">
             {clientName.charAt(0).toUpperCase()}
           </div>
           <div>
-            <p className="font-semibold text-gray-900 text-lg">{clientName}</p>
-            <p className="text-gray-500 text-sm">Valued Client</p>
+            <p className="text-lg font-semibold text-slate-900">{clientName}</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-amber-700">
+              Project Owner
+            </p>
           </div>
         </div>
 
-        {/* Project Details */}
-        <div className="flex flex-col gap-2 ml-15 mt-3">
-          <div className="flex items-center gap-2 text-gray-600">
-            <Building2 size={16} className="text-amber-600" />
-            <span className="text-sm font-medium">{projectName}</span>
-          </div>
-          <div className="flex items-center gap-2 text-gray-600">
-            <MapPin size={16} className="text-amber-600" />
-            <span className="text-sm">{place}</span>
-          </div>
+        <div className="flex flex-wrap items-center gap-3">
+          <span className="inline-flex items-center gap-2 rounded-full border border-amber-200/70 bg-white/70 px-3 py-1 text-xs font-semibold text-amber-700">
+            <Building2 size={14} className="text-amber-600" />
+            {projectName}
+          </span>
+          <span className="inline-flex items-center gap-2 rounded-full border border-amber-200/70 bg-white/70 px-3 py-1 text-xs font-semibold text-slate-600">
+            <MapPin size={14} className="text-amber-600" />
+            {place}
+          </span>
         </div>
       </div>
 
-      {/* Hover Effect Border */}
-      <div className="absolute inset-0 rounded-3xl border-2 border-amber-400/0 group-hover:border-amber-400/20 transition-all duration-500 pointer-events-none" />
+      <div className="pointer-events-none absolute inset-0 rounded-[28px] border-2 border-amber-400/0 transition-all duration-500 group-hover:border-amber-400/20" />
     </motion.div>
   );
 };
