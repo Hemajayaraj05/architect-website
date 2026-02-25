@@ -55,7 +55,7 @@ const Services = () => {
           transition={{ duration: 0.7 }}
           className="max-w-7xl mx-auto px-6 mb-20"
         >
-          <h2 className="text-5xl font-light text-center text-amber-900 tracking-tight mb-4">
+          <h2 className="text-4xl font-light text-center text-amber-900 tracking-tight mb-4">
             Our Services
           </h2>
           <p className="text-center text-lg mt-3 text-gray-600 max-w-2xl mx-auto leading-relaxed">

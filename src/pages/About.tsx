@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import SEO from "../seo/SEO";
 
 import heroImage from "../assets/img01.jpeg";
@@ -17,7 +18,13 @@ import company8 from "../assets/aboutimage/img38.jpg";
 import FounderCard from "../components/about/FounderCard";
 import FloatingImageCard from "../components/about/FloatingImageCard";
 import SectionHeading from "../components/about/SectionHeading";
-// import ReviewCard from "../components/about/ReviewCard";
+import ReviewCard from "../components/about/ReviewCard";
+import { fetchReviews } from "../api/projects.api";
+import type { Review } from "../api/projects.api";
+
+
+// Toggle this to use mock data while backend is being deployed
+const USE_MOCK_DATA = false;
 
 const studioImages: string[] = [
   company1,
@@ -31,6 +38,34 @@ const studioImages: string[] = [
 ];
 
 const About: React.FC = () => {
+  const [reviews, setReviews] = useState<Review[]>([]);
+  const [isLoadingReviews, setIsLoadingReviews] = useState(true);
+  const [reviewsError, setReviewsError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const loadReviews = async () => {
+      try {
+        if (USE_MOCK_DATA) {
+          // Use mock data for preview
+         
+          setReviewsError(null);
+        } else {
+          // Fetch from API
+          const data = await fetchReviews();
+          setReviews(data);
+          setReviewsError(null);
+        }
+      } catch (error) {
+        console.error("Failed to fetch reviews:", error);
+        setReviewsError(error instanceof Error ? error.message : "Failed to load reviews");
+      } finally {
+        setIsLoadingReviews(false);
+      }
+    };
+
+    loadReviews();
+  }, []);
+
   return (
     <>
       <SEO
@@ -139,18 +174,38 @@ const About: React.FC = () => {
         <div className="mt-32">
           <SectionHeading title="What Our Clients Say" />
 
-          {/* <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-8">
-            {reviews.map((review, index) => (
-              <ReviewCard
-                key={index}
-                name={review.name}
-                role={review.role}
-                review={review.review}
-                rating={review.rating}
-                index={index}
-              />
-            ))}
-          </div> */}
+          {isLoadingReviews ? (
+            <div className="max-w-6xl mx-auto px-6 text-center py-20">
+              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-amber-600"></div>
+              <p className="mt-4 text-gray-600">Loading reviews...</p>
+            </div>
+          ) : reviewsError ? (
+            <div className="max-w-6xl mx-auto px-6 text-center py-12">
+              <div className="bg-red-50 border border-red-200 rounded-2xl p-8 max-w-md mx-auto">
+                <p className="text-red-600 text-lg font-medium mb-2">Unable to load reviews</p>
+                <p className="text-red-500 text-sm">{reviewsError}</p>
+                <p className="text-gray-600 text-sm mt-4">Please check your connection and try again later.</p>
+              </div>
+            </div>
+          ) : reviews.length > 0 ? (
+            <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {reviews.map((review, index) => (
+                <ReviewCard
+                  key={review.id}
+                  clientName={review.client_name}
+                  projectName={review.project_name}
+                  place={review.place}
+                  review={review.review}
+                  stars={review.stars}
+                  index={index}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="max-w-6xl mx-auto px-6 text-center py-12">
+              <p className="text-gray-600 text-lg">No reviews yet. Check back soon!</p>
+            </div>
+          )}
 
           {/* Bottom Accent Line */}
           <motion.div
