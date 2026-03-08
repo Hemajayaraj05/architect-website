@@ -142,24 +142,6 @@ const DesignProcess = () => {
                   variants={itemVariants}
                   className="flex flex-col items-center text-center relative group"
                 >
-                  {/* Step Number Badge */}
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      duration: 0.5,
-                      delay: index * 0.12 + 0.2,
-                      type: "spring",
-                      stiffness: 120,
-                    }}
-                    className="absolute -top-3 -right-3 w-7 h-7 bg-linear-to-br from-amber-700 to-amber-900 rounded-full flex items-center justify-center"
-                  >
-                    <span className="text-white text-xs font-bold">
-                      {index + 1}
-                    </span>
-                  </motion.div>
-
                   {/* Icon Circle with Gradient and Rotating Border */}
                   <motion.div className="relative mb-6">
                     {/* Rotating Border Circle */}
@@ -182,7 +164,7 @@ const DesignProcess = () => {
                         scale: 1.15,
                         boxShadow: "0 20px 40px rgba(0,0,0,0.2)",
                       }}
-                      className={`w-20 h-20 rounded-full flex items-center justify-center bg-gradient-to-br ${step.color} shadow-lg relative overflow-hidden group cursor-pointer`}
+                      className={`w-20 h-20 rounded-full flex items-center justify-center bg-linear-to-br ${step.color} shadow-lg relative overflow-hidden group cursor-pointer`}
                     >
                       {/* Shimmer Effect */}
                       <motion.div
