@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import ProjectCard from "../components/project/ProjectCard";
+import ProjectCardSkeleton from "../components/project/ProjectCardSkeleton";
 import SEO from "../seo/SEO";
 import { fetchProjects, type Project } from "../api/projects.api";
 
@@ -46,8 +47,10 @@ const Projects = () => {
         </div>
 
         {loading ? (
-          <div className="text-center pb-16 text-gray-600">
-            Loading projects...
+          <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-18 pb-16">
+            {[...Array(6)].map((_, index) => (
+              <ProjectCardSkeleton key={index} />
+            ))}
           </div>
         ) : (
           <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-18 pb-16">
