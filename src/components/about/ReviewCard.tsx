@@ -24,7 +24,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7, delay: index * 0.15 }}
-      className="group relative overflow-hidden rounded-[28px] border border-white/40 bg-white/60 p-8 shadow-[0_8px_32px_0_rgba(31,38,135,0.15)] backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_8px_40px_0_rgba(31,38,135,0.25)]"
+      className="group relative overflow-hidden rounded-[28px] border border-white/40 bg-white/60 p-8 shadow-[0_8px_32px_0_rgba(31,38,135,0.15)] backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_8px_40px_0_rgba(31,38,135,0.25)] h-full flex flex-col"
     >
       <div className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-slate-300 via-slate-400 to-slate-300" />
       <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-slate-200/30 blur-3xl transition-transform duration-700 group-hover:scale-125" />
@@ -51,17 +51,13 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
         </div>
       </div>
 
-      <div className="mb-8">
-        <p className="relative text-balance text-base leading-relaxed text-slate-700 md:text-lg">
-          <span className="absolute -left-2 -top-4 text-6xl font-serif text-slate-300/40">
-            "
-          </span>
-          <span className="relative z-10 italic">{review}</span>
-          <span className="inline-block text-2xl font-serif text-slate-300/40 align-text-top leading-none ml-1">"</span>
+      <div className="mb-8 grow">
+        <p className="text-base leading-relaxed text-slate-700 md:text-lg">
+          {review}
         </p>
       </div>
 
-      <div className="space-y-4 border-t border-slate-200/70 pt-6">
+      <div className="space-y-4 border-t border-slate-200/70 pt-6 mt-auto">
         <div className="flex items-center gap-4">
           <div className="grid h-12 w-12 place-items-center rounded-full bg-linear-to-br from-slate-600 to-slate-700 text-lg font-bold text-white shadow-md">
             {clientName.charAt(0).toUpperCase()}
