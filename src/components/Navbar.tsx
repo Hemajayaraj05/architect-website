@@ -31,7 +31,7 @@ function Navbar() {
     className="w-9 h-9 rounded-full object-cover shadow-md"
   />
 
-  <div className="text-lg md:text-xl font-bold">
+  <div className="brand-wordmark text-lg md:text-xl font-bold">
     <span className="text-amber-700">LA ARCHI</span>
     
     <span className="text-amber-700">TECTS</span>
