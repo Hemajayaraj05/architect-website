@@ -139,6 +139,9 @@ const About: React.FC = () => {
 
         <div className="mt-28">
           <SectionHeading title="Meet the Minds Behind the Design" />
+          <p className="mt-5 mb-15 text-center text-gray-600 max-w-2xl mx-auto px-6">
+            A collaborative team of architects and designers turning ideas into enduring spaces.
+          </p>
 
           <div className="flex justify-center gap-20 flex-wrap">
             <FounderCard
@@ -158,6 +161,9 @@ const About: React.FC = () => {
 
         <div className="mt-32">
           <SectionHeading title="Inside Our Studio" />
+          <p className="mb-15 text-center text-gray-600 max-w-2xl mx-auto px-6">
+            A glimpse into the studio where concepts evolve into refined, build-ready realities.
+          </p>
 
           <div className="max-w-6xl mx-auto px-8 grid grid-cols-2 md:grid-cols-4 gap-10">
             {studioImages.map((img, index) => (
@@ -213,7 +219,7 @@ const About: React.FC = () => {
             whileInView={{ width: "100%" }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="h-1 bg-gradient-to-r from-amber-400 via-amber-600 to-amber-400 max-w-sm mx-auto mt-16 rounded-full"
+            className="h-1 bg-linear-to-r from-amber-400 via-amber-600 to-amber-400 max-w-sm mx-auto mt-16 rounded-full"
           />
         </div>
       </section>

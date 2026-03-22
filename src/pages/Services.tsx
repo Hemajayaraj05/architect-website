@@ -151,6 +151,9 @@ const Services = () => {
 
         {/* ===== Stats Section ===== */}
         <SectionHeading title="Our Impact in Numbers" />
+        <p className="text-center text-gray-600 max-w-2xl mx-auto ">
+          Real outcomes from thoughtful design, meticulous planning, and trusted delivery.
+        </p>
 
         <div
           ref={statsRef}
