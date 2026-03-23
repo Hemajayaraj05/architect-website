@@ -5,6 +5,7 @@ import { services ,stats} from "../data/services.data";
 import AnimatedCounter from "../components/services/AnimatedCounter";
 import DesignProcess from "../components/services/DesignProcess";
 import SectionHeading from "../components/about/SectionHeading";
+import { LOCAL_BUSINESS_SCHEMA, SERVICE_AREAS, SITE_URL } from "../seo/siteConfig";
 
 import ServiceVisual from "../components/services/ServiceVisual";
 
@@ -38,9 +39,43 @@ const Services = () => {
   return (
     <>
       <SEO
-        title="Our Services | Architecture & Interior Design"
-        description="Architectural design, interiors, landscape, and project management services."
-        url=""
+        title="Architecture And Interior Services Across India"
+        description="End-to-end architecture, interior design, landscape, and project management services delivered across cities and regions in India."
+        url={`${SITE_URL}/services`}
+        keywords={[
+          "architecture services near me",
+          "interior design services India",
+          "landscape architects India",
+          "project management architects India",
+        ]}
+        structuredData={[
+          LOCAL_BUSINESS_SCHEMA,
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            serviceType: "Architecture and Interior Design",
+            areaServed: [
+              {
+                "@type": "State",
+                name: "Tamil Nadu",
+              },
+              {
+                "@type": "Country",
+                name: "India",
+              },
+              ...SERVICE_AREAS.map((name) => ({
+                "@type": "Place",
+                name,
+              })),
+            ],
+            provider: {
+              "@type": "ArchitectureFirm",
+              name: "LA Architects",
+              url: SITE_URL,
+            },
+            url: `${SITE_URL}/services`,
+          },
+        ]}
       />
 
       <section

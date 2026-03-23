@@ -15,6 +15,7 @@ import {
 import ContactInfoCard from "../components/contact/ContactInfoCard";
 import SocialLinksRow from "../components/contact/SocialLinksRow";
 import AppointmentForm from "../components/contact/AppointmentForm";
+import { LOCAL_BUSINESS_SCHEMA, SITE_URL } from "../seo/siteConfig";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -43,9 +44,23 @@ const ContactUs: React.FC = () => {
   return (
     <>
       <SEO
-        title="Contact Us | Architectural Studio"
-        description="Get in touch with us for architectural and interior design services."
-        url=""
+        title="Contact Architects For Any Location"
+        description="Contact LA Architects for architecture, interior design, and project consultation for any city or region in India."
+        url={`${SITE_URL}/contact`}
+        keywords={[
+          "contact architect near me",
+          "architecture consultation India",
+          "interior design contact India",
+        ]}
+        structuredData={[
+          LOCAL_BUSINESS_SCHEMA,
+          {
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            name: "Contact LA Architects",
+            url: `${SITE_URL}/contact`,
+          },
+        ]}
       />
 
       <section id="connect" className="relative bg-gray-200 py-28 overflow-hidden">

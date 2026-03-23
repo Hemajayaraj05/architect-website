@@ -21,6 +21,7 @@ import SectionHeading from "../components/about/SectionHeading";
 import ReviewCard from "../components/about/ReviewCard";
 import { fetchReviews } from "../api/projects.api";
 import type { Review } from "../api/projects.api";
+import { LOCAL_BUSINESS_SCHEMA, SITE_URL } from "../seo/siteConfig";
 
 
 // Toggle this to use mock data while backend is being deployed
@@ -69,9 +70,25 @@ const About: React.FC = () => {
   return (
     <>
       <SEO
-        title="About Us | Architectural Studio"
-        description="Learn more about our architectural philosophy and design expertise."
-        url=""
+        title="About LA Architects"
+        description="Meet the team behind LA Architects and learn our approach to modern, sustainable, and human-centered architecture for projects across India."
+        url={`${SITE_URL}/about`}
+        keywords={[
+          "about architecture firm India",
+          "architecture studio team",
+          "sustainable architecture India",
+        ]}
+        structuredData={[
+          LOCAL_BUSINESS_SCHEMA,
+          {
+            "@context": "https://schema.org",
+            "@type": "AboutPage",
+            name: "About LA Architects",
+            url: `${SITE_URL}/about`,
+            description:
+              "Learn about LA Architects, an architecture and interior design studio serving multiple locations across India.",
+          },
+        ]}
       />
 
       <section id="about" className="bg-gray-200 py-28">

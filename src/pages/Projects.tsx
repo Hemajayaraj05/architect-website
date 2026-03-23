@@ -5,6 +5,7 @@ import ProjectCard from "../components/project/ProjectCard";
 import ProjectCardSkeleton from "../components/project/ProjectCardSkeleton";
 import SEO from "../seo/SEO";
 import { fetchProjects, type Project } from "../api/projects.api";
+import { LOCAL_BUSINESS_SCHEMA, SITE_URL } from "../seo/siteConfig";
 
 const Projects = () => {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -31,9 +32,26 @@ const Projects = () => {
   return (
     <>
       <SEO
-        title="Our Projects | Architectural Portfolio"
-        description="Explore our completed architectural and interior projects."
-        url=""
+        title="Architecture Portfolio Across India"
+        description="Browse LA Architects' residential and commercial architecture portfolio delivered across multiple cities and regions in India."
+        url={`${SITE_URL}/projects`}
+        keywords={[
+          "architectural projects India",
+          "interior projects India",
+          "residential design portfolio India",
+          "commercial architecture portfolio",
+        ]}
+        structuredData={[
+          LOCAL_BUSINESS_SCHEMA,
+          {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            name: "LA Architects Project Portfolio",
+            url: `${SITE_URL}/projects`,
+            description:
+              "Architecture and interior design project portfolio across multiple locations in India.",
+          },
+        ]}
       />
 
       <section className="bg-gray-200 md:pr-11 md:pl-11" id="projects">

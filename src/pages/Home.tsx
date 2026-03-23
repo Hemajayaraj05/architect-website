@@ -2,6 +2,7 @@ import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import SEO from "../seo/SEO";
+import { LOCAL_BUSINESS_SCHEMA, SERVICE_AREAS, SITE_URL } from "../seo/siteConfig";
 
 
 import bg1 from "../assets/bishop/img15.jpg";
@@ -20,9 +21,31 @@ const navigate = useNavigate();
   return (
     <>
      <SEO
-        title="Architectural Design Studio | Modern Spaces"
-        description="We design modern architectural, interior, and landscape spaces."
-        url="" //need to replace domain url
+        title="Architects For Any Location In India"
+        description="LA Architects delivers architecture and interior design solutions for residential and commercial projects across multiple cities and regions in India."
+        url={SITE_URL}
+        keywords={[
+          "architect near me",
+          "best architects in India",
+          "interior designer near me",
+          "residential architecture India",
+          "commercial architects India",
+          ...SERVICE_AREAS.map((area) => `architect in ${area}`),
+        ]}
+        structuredData={[
+          LOCAL_BUSINESS_SCHEMA,
+          {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "LA Architects",
+            url: SITE_URL,
+            potentialAction: {
+              "@type": "SearchAction",
+              target: `${SITE_URL}/projects?location={search_term_string}`,
+              "query-input": "required name=search_term_string",
+            },
+          },
+        ]}
       />
     <div className="relative w-full h-screen overflow-hidden">
      
