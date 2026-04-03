@@ -40,7 +40,6 @@ const steps = [
     icon: FaDraftingCompass,
     color: "from-amber-800 to-amber-950",
     bgColor: "bg-amber-100",
-    highlight: true,
   },
   {
     title: "Execution Planning",
@@ -196,22 +195,6 @@ const DesignProcess = () => {
                     {step.description}
                   </p>
 
-                  {/* Highlight Indicator */}
-                  {step.highlight && (
-                    <motion.div
-                      animate={{
-                        boxShadow: [
-                          "0 0 0 0 rgba(217, 119, 6, 0.4)",
-                          "0 0 0 15px rgba(217, 119, 6, 0)",
-                        ],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                      }}
-                      className="absolute -inset-3 border-2 border-amber-600 rounded-full"
-                    />
-                  )}
                 </motion.div>
               );
             })}

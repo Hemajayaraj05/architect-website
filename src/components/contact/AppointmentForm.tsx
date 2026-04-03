@@ -106,8 +106,7 @@ const API="https://architect-website-backend.onrender.com/api/contact";
             value={formData.name}
             onChange={handleChange}
             placeholder="Full Name"
-            className="border-b border-gray-400 bg-transparent py-3 text-sm
-                       focus:outline-none focus:border-amber-800"
+            className="glass-input"
           />
 
           <input
@@ -117,8 +116,7 @@ const API="https://architect-website-backend.onrender.com/api/contact";
             value={formData.email}
             onChange={handleChange}
             placeholder="Email Address"
-            className="border-b border-gray-400 bg-transparent py-3 text-sm
-                       focus:outline-none focus:border-amber-800"
+            className="glass-input"
           />
 
           <input
@@ -128,19 +126,19 @@ const API="https://architect-website-backend.onrender.com/api/contact";
             value={formData.phone}
             onChange={handleChange}
             placeholder="Phone / WhatsApp Number"
-            className="border-b border-gray-400 bg-transparent py-3 text-sm
-                       focus:outline-none focus:border-amber-800"
+            className="glass-input"
           />
 
           <input
             required
-            type="date"
+            type="text"
             name="date"
             value={formData.date}
             onChange={handleChange}
-            placeholder="Preferred date"
-            className="border-b border-gray-400 bg-transparent py-3 text-sm
-                       focus:outline-none focus:border-amber-800"
+            placeholder="mm/dd/yyyy"
+            inputMode="numeric"
+            autoComplete="off"
+            className="glass-input"
           />
 
           <select
@@ -148,8 +146,7 @@ const API="https://architect-website-backend.onrender.com/api/contact";
             name="timeSlot"
             value={formData.timeSlot}
             onChange={handleChange}
-            className="border-b border-gray-400 bg-transparent py-3 text-sm
-                       focus:outline-none focus:border-amber-800"
+            className="glass-input glass-select"
           >
             <option value="" disabled>
               Preferred Time Slot
@@ -164,8 +161,7 @@ const API="https://architect-website-backend.onrender.com/api/contact";
             name="meetingType"
             value={formData.meetingType}
             onChange={handleChange}
-            className="border-b border-gray-400 bg-transparent py-3 text-sm
-                       focus:outline-none focus:border-amber-800"
+            className="glass-input glass-select"
           >
             <option value="" disabled>
               Preferred Meeting Type

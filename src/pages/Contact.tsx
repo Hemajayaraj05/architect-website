@@ -168,10 +168,27 @@ const ContactUs: React.FC = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="text-center text-gray-600 text-sm mt-20 italic font-light"
+            className="text-center text-gray-600 text-sm mt-10 italic font-light"
           >
             "Your dream space starts here"
           </motion.p>
+
+          <motion.footer
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.65 }}
+            className="mt-10 border-t border-amber-300/70 pt-8 pb-4 text-gray-600"
+          >
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-sm">
+              <p className="text-center md:text-left">
+                Copyright @ 2026 LA Architects
+              </p>
+              <p className="text-center md:text-right">
+                Madurai, Tamil Nadu 
+              </p>
+            </div>
+          </motion.footer>
         </div>
       </section>
     </>
