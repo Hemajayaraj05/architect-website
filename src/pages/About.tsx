@@ -163,7 +163,7 @@ const About: React.FC = () => {
           <div className="flex justify-center gap-20 flex-wrap">
             <FounderCard
               image={founder2}
-              name="Ar Austin kingsley"
+              name="Ar Austin Kingsly D"
               role="Managing Director"
             />
 
