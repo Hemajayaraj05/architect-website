@@ -21,15 +21,15 @@ const navigate = useNavigate();
   return (
     <>
      <SEO
-        title="Architects For Any Location In India"
-        description="LA Architects delivers architecture and interior design solutions for residential and commercial projects across multiple cities and regions in India."
+        title="Best Architects in Madurai | LA Architects"
+        description="LA Architects — Award-winning architecture and interior design studio in Madurai. Bespoke homes, sustainable designs and end-to-end project delivery. Free consultation available."
         url={SITE_URL}
         keywords={[
-          "architect near me",
-          "best architects in India",
-          "interior designer near me",
-          "residential architecture India",
-          "commercial architects India",
+          "best architects in Madurai",
+          "architects Madurai",
+          "residential architects Madurai",
+          "sustainable architecture Madurai",
+          "interior designers Madurai",
           ...SERVICE_AREAS.map((area) => `architect in ${area}`),
         ]}
         structuredData={[
@@ -88,30 +88,50 @@ const navigate = useNavigate();
         </p> */}
 
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">
-          Designing Spaces, <br /> Building Dreams
+          Madurai’s Trusted Architects — LA Architects
         </h1>
 
         <p className="text-white  mb-8 text-base md:text-lg lg:text-xl max-w-2xl">
-          Innovative Architectural Solutions for Modern Living
+          Thoughtful, sustainable architecture and interiors that reflect your lifestyle. From concept to completion, we craft homes and commercial spaces that balance aesthetics, function, and value.
         </p>
-<button
-  onClick={() => navigate("/projects")}
-  className="
-    inline-flex items-center justify-center
-    bg-[#A05A49]
-    text-white
-    px-6 md:px-8 py-3 md:py-4
-    rounded-lg
-    font-medium
-    cursor-pointer
-    transition-all duration-300
-    hover:bg-[#8B4538]
-    hover:shadow-lg
-    hover:scale-[1.03]
-  "
->
-  Explore Our Projects
-</button>
+
+        <div className="flex gap-4">
+          <button
+            onClick={() => navigate("/contact")}
+            className="
+              inline-flex items-center justify-center
+              bg-white/90 text-[#3a2b26]
+              px-6 md:px-8 py-3 md:py-4
+              rounded-lg
+              font-medium
+              cursor-pointer
+              transition-all duration-300
+              hover:opacity-95
+              shadow-sm
+            "
+          >
+            Get a Free Consultation
+          </button>
+
+          <button
+            onClick={() => navigate("/projects")}
+            className="
+              inline-flex items-center justify-center
+              bg-[#A05A49]
+              text-white
+              px-6 md:px-8 py-3 md:py-4
+              rounded-lg
+              font-medium
+              cursor-pointer
+              transition-all duration-300
+              hover:bg-[#8B4538]
+              hover:shadow-lg
+              hover:scale-[1.03]
+            "
+          >
+            Explore Our Projects
+          </button>
+        </div>
 
       </motion.div>
 
