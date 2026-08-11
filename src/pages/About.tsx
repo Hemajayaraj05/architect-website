@@ -153,27 +153,32 @@ const About: React.FC = () => {
           </motion.div>
         </div>
 
+{/* Replace the existing "Meet the Minds Behind the Design" block in About.tsx with this */}
 
-        <div className="mt-28">
-          <SectionHeading title="Meet the Minds Behind the Design" />
-          <p className="mt-5 mb-15 text-center text-gray-600 max-w-2xl mx-auto px-6">
-            A collaborative team of architects and designers turning ideas into enduring spaces.
-          </p>
+<div className="mt-28">
+  <SectionHeading title="Meet the Minds Behind the Design" />
+  <p className="mt-5 mb-16 text-center text-gray-600 max-w-2xl mx-auto px-6">
+    A collaborative team of architects and designers turning ideas into enduring spaces.
+  </p>
 
-          <div className="flex justify-center gap-20 flex-wrap">
-            <FounderCard
-              image={founder2}
-              name="Ar Austin Kingsly D"
-              role="Managing Director"
-            />
+  <div className="flex flex-wrap justify-center gap-10 sm:gap-16 px-6">
+    <FounderCard
+      image={founder2}
+      name="Ar Austin Kingsly D"
+      role="Managing Director"
+      quote="Good architecture disappears into how naturally a family moves through their day."
+      index={0}
+    />
 
-            <FounderCard
-              image={founder1}
-              name="Ar Ajith M"
-              role="Director"
-            />
-          </div>
-        </div>
+    <FounderCard
+      image={founder1}
+      name="Ar Ajith M"
+      role="Director"
+      quote="We don't hand over drawings — we hand over spaces we'd choose to live in ourselves."
+      index={1}
+    />
+  </div>
+</div>
 
 
         <div className="mt-32">

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Star, MapPin, Building2 } from "lucide-react";
+import { Star, MapPin, Building2, Quote } from "lucide-react";
 
 interface ReviewCardProps {
   clientName: string;
@@ -10,6 +10,17 @@ interface ReviewCardProps {
   index: number;
 }
 
+/**
+ * Design language: "drafting sheet" — treats each testimonial like an
+ * annotated page from an architect's set. Corner registration marks,
+ * a dimension-line divider, and a brass accent replace the generic
+ * frosted-glass card so it reads as considered rather than templated.
+ *
+ * Add these once to your global CSS / tailwind.config for the intended
+ * type pairing (falls back gracefully to system serif/sans if skipped):
+ *   Display/quote: "Fraunces", serif
+ *   Body/UI:        "Inter", sans-serif
+ */
 const ReviewCard: React.FC<ReviewCardProps> = ({
   clientName,
   projectName,
@@ -20,69 +31,95 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
 }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7, delay: index * 0.15 }}
-      className="group relative overflow-hidden rounded-[28px] border border-white/40 bg-white/60 p-8 shadow-[0_8px_32px_0_rgba(31,38,135,0.15)] backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_8px_40px_0_rgba(31,38,135,0.25)] h-full flex flex-col"
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.6, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}
+      className="group relative flex h-full flex-col bg-[#FAF8F4] border border-[#E3DDD1] p-8 md:p-9 transition-shadow duration-500 hover:shadow-[0_20px_50px_-20px_rgba(28,27,25,0.25)]"
     >
-      <div className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-slate-300 via-slate-400 to-slate-300" />
-      <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-slate-200/30 blur-3xl transition-transform duration-700 group-hover:scale-125" />
-      <div className="absolute -left-10 -bottom-12 h-40 w-40 rounded-full bg-slate-100/30 blur-3xl transition-transform duration-700 group-hover:scale-125" />
+      {/* corner registration marks — draw in on hover, like blueprint alignment marks */}
+      {[
+        "top-3 left-3 border-t border-l",
+        "top-3 right-3 border-t border-r",
+        "bottom-3 left-3 border-b border-l",
+        "bottom-3 right-3 border-b border-r",
+      ].map((pos, i) => (
+        <span
+          key={i}
+          className={`pointer-events-none absolute ${pos} h-3 w-3 border-[#B08D57] transition-all duration-500 group-hover:h-5 group-hover:w-5`}
+        />
+      ))}
 
-      <div className="mb-7 flex items-center justify-between">
-        <div className="flex items-center gap-2">
+      {/* top accent — expands from center on hover, like a dimension line extending */}
+      <span className="absolute left-1/2 top-0 h-[2px] w-10 -translate-x-1/2 bg-[#B08D57] transition-all duration-500 group-hover:w-24" />
+
+      {/* large decorative quote mark, architectural rather than cute */}
+      <Quote
+        size={56}
+        strokeWidth={1}
+        className="absolute right-7 top-7 text-[#35506B]/[0.08] rotate-180"
+      />
+
+      {/* rating row */}
+      <div className="relative mb-8 flex items-center justify-between">
+        <div className="flex items-center gap-1">
           {[...Array(5)].map((_, i) => (
             <Star
               key={i}
-              size={18}
-              className={`${
+              size={15}
+              strokeWidth={1.5}
+              className={
                 i < stars
-                  ? "fill-yellow-400 text-yellow-400"
-                  : "fill-slate-200 text-slate-200"
-              } transition-all duration-300`}
+                  ? "fill-[#B08D57] text-[#B08D57]"
+                  : "fill-transparent text-[#D8D2C4]"
+              }
             />
           ))}
         </div>
-        <div className="flex items-center gap-2 rounded-full bg-white/80 border border-slate-200 px-3 py-1 text-sm font-semibold text-slate-700">
-          <span className="text-base">{stars}.0</span>
-          <span className="text-slate-400">/</span>
-          <span className="text-xs text-slate-500">5</span>
-        </div>
+        <span className="font-mono text-[11px] tracking-[0.15em] text-[#8A8477]">
+          {String(index + 1).padStart(2, "0")} / RATED {stars}.0
+        </span>
       </div>
 
-      <div className="mb-8 grow">
-        <p className="text-base leading-relaxed text-slate-700 md:text-lg">
+      {/* review copy */}
+      <div className="relative mb-10 grow">
+        <p className="font-serif text-[19px] md:text-[21px] leading-[1.55] text-[#1C1B19]">
           {review}
         </p>
       </div>
 
-      <div className="space-y-4 border-t border-slate-200/70 pt-6 mt-auto">
-        <div className="flex items-center gap-4">
-          <div className="grid h-12 w-12 place-items-center rounded-full bg-linear-to-br from-slate-600 to-slate-700 text-lg font-bold text-white shadow-md">
+      {/* dimension-line divider */}
+      <div className="mb-6 flex items-center gap-2 text-[#B08D57]">
+        <span className="h-1.5 w-px bg-current" />
+        <span className="h-px flex-1 bg-current opacity-40" />
+        <span className="h-1.5 w-px bg-current" />
+      </div>
+
+      {/* client + meta */}
+      <div className="flex items-end justify-between gap-4">
+        <div className="flex items-center gap-3.5">
+          <div className="grid h-11 w-11 shrink-0 place-items-center bg-[#1C1B19] text-sm font-semibold text-[#F5F1EB]">
             {clientName.charAt(0).toUpperCase()}
           </div>
           <div>
-            <p className="text-lg font-semibold text-slate-900">{clientName}</p>
-            <p className="text-xs uppercase tracking-[0.2em] text-slate-600">
-              Project Owner
+            <p className="text-[15px] font-semibold text-[#1C1B19]">{clientName}</p>
+            <p className="mt-0.5 text-[11px] uppercase tracking-[0.18em] text-[#8A8477]">
+              Client
             </p>
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-3">
-          <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-xs font-semibold text-slate-700">
-            <Building2 size={14} className="text-slate-500" />
+        <div className="text-right">
+          <p className="flex items-center justify-end gap-1.5 text-[13px] font-medium text-[#1C1B19]">
+            <Building2 size={13} className="text-[#B08D57]" />
             {projectName}
-          </span>
-          <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-xs font-semibold text-slate-600">
-            <MapPin size={14} className="text-slate-500" />
+          </p>
+          <p className="mt-1 flex items-center justify-end gap-1.5 text-[12px] text-[#8A8477]">
+            <MapPin size={12} className="text-[#B08D57]" />
             {place}
-          </span>
+          </p>
         </div>
       </div>
-
-      <div className="pointer-events-none absolute inset-0 rounded-[28px] border-2 border-slate-300/0 transition-all duration-500 group-hover:border-slate-300/30" />
     </motion.div>
   );
 };
