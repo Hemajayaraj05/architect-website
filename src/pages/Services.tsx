@@ -80,7 +80,7 @@ const Services = () => {
 
       <section
         id="expertise"
-        className="pt-24 pb-24 bg-linear-to-b from-stone-100 to-stone-200 md:px-12"
+        className="pt-24 pb-24 bg-linear-to-b from-white-50 to-stone-100 md:px-12"
       >
         {/* ===== Section Heading ===== */}
         <motion.div

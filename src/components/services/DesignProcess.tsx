@@ -45,12 +45,9 @@ const steps = [
   },
 ];
 
-// Duplicated once so the loop is seamless — the last card always flows straight into
-// the first card again, with no visible seam or reset.
+
 const marqueeSteps = [...steps, ...steps];
 
-// Dotted connector, no arrowhead. `direction="down"` arcs from a raised card into a
-// lowered one; `direction="up"` is the mirror image.
 const Connector = ({ direction }: { direction: "up" | "down" }) => (
   <svg
     width="84"
@@ -89,7 +86,7 @@ const DesignProcess = () => {
           <span className="inline-block text-xs font-semibold tracking-[0.25em] text-amber-700 uppercase mb-3">
             How We Work
           </span>
-          <h2 className="text-4xl md:text-5xl font-light text-stone-900 tracking-tight mb-4">
+          <h2 className="text-4xl md:text-3xl font-light text-amber-900 tracking-tight mb-4">
             Our Design Journey
           </h2>
           <p className="text-stone-500 max-w-xl mx-auto text-lg">
@@ -107,10 +104,7 @@ const DesignProcess = () => {
           {marqueeSteps.map((step, index) => {
             const Icon = step.icon;
             const isUp = step.offset === "up";
-            // True for every gap EXCEPT the one between the last step of a
-            // cycle (Project Delivery) and the first step of the next
-            // (Consultation) — that seam only exists because the sequence is
-            // duplicated for the seamless loop, so it should never look connected.
+
             const isCycleBoundary = (index + 1) % steps.length === 0;
             const hasNext = index < marqueeSteps.length - 1 && !isCycleBoundary;
 
