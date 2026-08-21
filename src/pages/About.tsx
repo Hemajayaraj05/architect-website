@@ -91,7 +91,7 @@ const About: React.FC = () => {
         ]}
       />
 
-      <section id="about" className="bg-gray-200 py-28">
+      <section id="about" className="from-stone-50 to-stone-100 py-28">
 
         <div className="text-center mb-8 px-7">
           <h2 className="text-4xl font-light text-amber-900 tracking-tight">
@@ -110,7 +110,7 @@ const About: React.FC = () => {
             transition={{ duration: 0.9 }}
             className="flex justify-center"
           >
-            <div className="w-full max-w-sm rounded-3xl bg-gray-150 shadow-2xl p-2">
+            <div className="w-full max-w-sm rounded-3xl bg-gray-150  p-2">
               <div className="w-full aspect-square rounded-2xl overflow-hidden">
                 <img
                   src={heroImage}
@@ -221,8 +221,6 @@ const About: React.FC = () => {
                 <ReviewCard
                   key={review.id}
                   clientName={review.client_name}
-                  projectName={review.project_name}
-                  place={review.place}
                   review={review.review}
                   stars={review.stars}
                   index={index}

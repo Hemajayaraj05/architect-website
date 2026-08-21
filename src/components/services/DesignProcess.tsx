@@ -7,213 +7,175 @@ import {
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 
-const borderRotateVariants = {
-  animate: {
-    rotate: 360,
-    transition: {
-      duration: 6,
-      repeat: Infinity,
-      ease: "linear" as const,
-    },
-  },
-};
-
-
 const steps = [
   {
+    number: "01",
     title: "Consultation",
     description: "Understanding vision, lifestyle needs, and budget alignment.",
     icon: FaHandshake,
-    color: "from-amber-700 to-amber-900",
-    bgColor: "bg-amber-100",
+    offset: "up",
   },
   {
+    number: "02",
     title: "Site Analysis",
     description: "Studying site conditions, regulations, and context.",
     icon: FaMapMarkedAlt,
-    color: "from-amber-600 to-amber-800",
-    bgColor: "bg-amber-100",
+    offset: "down",
   },
   {
+    number: "03",
     title: "Concept Design",
     description: "Layouts, massing, and overall design intent.",
     icon: FaDraftingCompass,
-    color: "from-amber-800 to-amber-950",
-    bgColor: "bg-amber-100",
+    offset: "up",
   },
   {
+    number: "04",
     title: "Execution Planning",
     description: "Coordination, timelines, and quality control.",
     icon: FaTools,
-    color: "from-amber-700 to-amber-900",
-    bgColor: "bg-amber-100",
+    offset: "down",
   },
   {
+    number: "05",
     title: "Project Delivery",
     description: "Careful execution with refined detailing.",
     icon: FaCheckCircle,
-    color: "from-amber-600 to-amber-800",
-    bgColor: "bg-amber-100",
+    offset: "up",
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.1,
-    },
-  },
-};
+// Duplicated once so the loop is seamless — the last card always flows straight into
+// the first card again, with no visible seam or reset.
+const marqueeSteps = [...steps, ...steps];
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      type: "tween" as const,
-    },
-  },
-};
-
-const iconVariants = {
-  hidden: { scale: 0, rotate: -180 },
-  visible: {
-    scale: 1,
-    rotate: 0,
-    transition: {
-      duration: 0.8,
-      type: "spring" as const,
-      stiffness: 100,
-    },
-  },
-};
+// Dotted connector, no arrowhead. `direction="down"` arcs from a raised card into a
+// lowered one; `direction="up"` is the mirror image.
+const Connector = ({ direction }: { direction: "up" | "down" }) => (
+  <svg
+    width="84"
+    height="140"
+    viewBox="0 0 84 140"
+    fill="none"
+    className="shrink-0 relative z-0"
+  >
+    <path
+      d={
+        direction === "down"
+          ? "M10 10 C 10 60, 10 68, 74 96"
+          : "M10 130 C 10 80, 10 72, 74 44"
+      }
+      stroke="#a16207"
+      strokeOpacity="0.45"
+      strokeWidth="3"
+      strokeLinecap="round"
+      strokeDasharray="0.5 11"
+      fill="none"
+    />
+  </svg>
+);
 
 const DesignProcess = () => {
   return (
-    <section className="py-28 bg-gray-200 overflow-hidden">
+    <section className="py-28 bg-gradient-to-b from-stone-50 to-stone-100 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Section Header with Animation */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="md:mb-24 text-center mb-12"
+          className="text-center mb-16 md:mb-20"
         >
-          <h2 className="text-4xl font-light text-amber-900 tracking-tight mb-4">
+          <span className="inline-block text-xs font-semibold tracking-[0.25em] text-amber-700 uppercase mb-3">
+            How We Work
+          </span>
+          <h2 className="text-4xl md:text-5xl font-light text-stone-900 tracking-tight mb-4">
             Our Design Journey
           </h2>
-          <p className="mt-4 text-gray-600 max-w-2xl mx-auto text-lg">
-            A deliberate and structured approach to shaping meaningful spaces
+          <p className="text-stone-500 max-w-xl mx-auto text-lg">
+            A deliberate, structured approach to shaping meaningful spaces
           </p>
         </motion.div>
+      </div>
 
-        {/* Steps Container */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="relative max-w-6xl mx-auto"
-        >
-          {/* Animated Connection Line */}
-          <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.2, delay: 0.3, type: "tween" }}
-            className="hidden md:block absolute top-20 left-0 right-0 h-1 bg-linear-to-r from-amber-700 via-amber-800 to-amber-700 origin-left"
-            style={{ transformOrigin: "left" }}
-          />
+      {/* Full-bleed continuous flow */}
+      <div className="relative w-full">
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 md:w-48 z-10 bg-gradient-to-r from-stone-100 to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 md:w-48 z-10 bg-gradient-to-l from-stone-100 to-transparent" />
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-5 md:gap-6">
-            {steps.map((step, index) => {
-              const Icon = step.icon;
+        <div className="marquee-track flex items-center w-max py-16">
+          {marqueeSteps.map((step, index) => {
+            const Icon = step.icon;
+            const isUp = step.offset === "up";
+            // True for every gap EXCEPT the one between the last step of a
+            // cycle (Project Delivery) and the first step of the next
+            // (Consultation) — that seam only exists because the sequence is
+            // duplicated for the seamless loop, so it should never look connected.
+            const isCycleBoundary = (index + 1) % steps.length === 0;
+            const hasNext = index < marqueeSteps.length - 1 && !isCycleBoundary;
 
-              return (
-                <motion.div
-                  key={index}
-                  variants={itemVariants}
-                  className="flex flex-col items-center text-center relative group"
+            return (
+              <div key={index} className="flex items-center">
+                <div
+                  className={`group shrink-0 w-64 rounded-[1.75rem] bg-white/90 backdrop-blur-sm px-7 py-8 border border-stone-200/70 shadow-[0_2px_6px_rgba(41,25,10,0.04),0_16px_32px_-16px_rgba(41,25,10,0.18)] transition-shadow duration-300 hover:shadow-[0_2px_6px_rgba(41,25,10,0.06),0_24px_40px_-16px_rgba(41,25,10,0.28)] ${
+                    isUp ? "-translate-y-8" : "translate-y-8"
+                  }`}
                 >
-                  {/* Icon Circle with Gradient and Rotating Border */}
-                  <motion.div className="relative mb-6">
-                    {/* Rotating Border Circle */}
-                    <motion.div
-                      variants={borderRotateVariants}
-                      animate="animate"
-                      className="absolute inset-0 rounded-full"
-                      style={{
-                        background: `conic-gradient(from 0deg, #b45309, #d97706, #92400e, #b45309)`,
-                        padding: "3px",
-                      }}
-                    >
-                      <div className="absolute inset-3 rounded-full bg-gray-200" />
-                    </motion.div>
-
-                    {/* Main Icon Circle */}
-                    <motion.div
-                      variants={iconVariants}
-                      whileHover={{
-                        scale: 1.15,
-                        boxShadow: "0 20px 40px rgba(0,0,0,0.2)",
-                      }}
-                      className={`w-20 h-20 rounded-full flex items-center justify-center bg-linear-to-br ${step.color} shadow-lg relative overflow-hidden group cursor-pointer`}
-                    >
-                      {/* Shimmer Effect */}
-                      <motion.div
-                        animate={{
-                          opacity: [0, 1, 0],
-                        }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                          delay: index * 0.2,
-                        }}
-                        className="absolute inset-0 bg-white/20"
-                      />
-
-                      <Icon className="text-white text-2xl relative z-10" />
-                    </motion.div>
-                  </motion.div>
-
-                  {/* Step Title */}
-                  <motion.h3
-                    whileHover={{ y: -5 }}
-                    className="text-base font-semibold text-gray-900 tracking-wide mb-2 transition-all"
-                  >
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-amber-50 border border-amber-200/70">
+                      <Icon className="text-amber-700 text-lg" />
+                    </div>
+                    <span className="text-xs font-medium tracking-widest text-stone-300">
+                      {step.number}
+                    </span>
+                  </div>
+                  <h3 className="text-lg font-semibold text-stone-900 tracking-tight mb-2">
                     {step.title}
-                  </motion.h3>
-
-                  {/* Step Description */}
-                  <p className="text-sm text-gray-600 leading-relaxed max-w-56 group-hover:text-gray-700 transition-colors">
+                  </h3>
+                  <p className="text-sm text-stone-500 leading-relaxed">
                     {step.description}
                   </p>
+                </div>
 
-                </motion.div>
-              );
-            })}
-          </div>
-        </motion.div>
-
-        {/* Bottom Accent */}
-        <motion.div
-          initial={{ width: 0 }}
-          whileInView={{ width: "100%" }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay: 0.8 }}
-          className="h-1 bg-linear-to-r from-amber-700 via-amber-800 to-amber-700 max-w-sm mx-auto mt-20 rounded-full"
-        />
+                {hasNext && <Connector direction={isUp ? "down" : "up"} />}
+                {isCycleBoundary && <div className="w-16 md:w-24 shrink-0" />}
+              </div>
+            );
+          })}
+        </div>
       </div>
+
+      <motion.div
+        initial={{ width: 0 }}
+        whileInView={{ width: "100%" }}
+        viewport={{ once: true }}
+        transition={{ duration: 1, delay: 0.4 }}
+        className="h-px bg-gradient-to-r from-transparent via-amber-700/40 to-transparent max-w-md mx-auto"
+      />
+
+      <style>{`
+        .marquee-track {
+          animation: marquee-scroll 38s linear infinite;
+        }
+        .marquee-track:hover {
+          animation-play-state: paused;
+        }
+        @keyframes marquee-scroll {
+          0% {
+            transform: translateX(0%);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .marquee-track {
+            animation: none;
+          }
+        }
+      `}</style>
     </section>
   );
 };
 
 export default DesignProcess;
-
-

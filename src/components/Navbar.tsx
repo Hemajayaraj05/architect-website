@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
- import logo from "../assets/logo.jpeg";
+import logo from "../assets/logo.jpeg";
 
 function Navbar() {
   const location = useLocation();
@@ -20,26 +20,24 @@ function Navbar() {
 
   return (
     <header className="fixed top-4 left-0 right-0 md:left-12 md:right-12 z-50 px-4 md:px-0">
-      <nav className="max-w-5xl mx-auto flex items-center justify-between bg-white/30 backdrop-blur-lg border border-white/40 shadow-lg rounded-3xl md:rounded-4xl px-4 py-2">
-    
-      
+      <nav className="relative max-w-5xl mx-auto flex items-center justify-between overflow-hidden bg-white/55 backdrop-blur-xl backdrop-saturate-150 border border-gray-300/40 ring-1 ring-black/[0.03] rounded-3xl md:rounded-4xl px-4 py-2">
+        {/* glass edge highlight — thin light line along the top, like light catching a glass panel */}
+        <span className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/90 to-transparent" />
 
-<div className="flex items-center gap-2">
-  <img
-    src={logo}
-    alt="LA Architect Logo"
-    className="w-9 h-9 rounded-full object-cover shadow-md"
-  />
+        <div className="relative flex items-center gap-2">
+          <img
+            src={logo}
+            alt="LA Architect Logo"
+            className="w-9 h-9 rounded-full object-cover shadow-md"
+          />
 
-  <div className="brand-wordmark text-lg md:text-xl font-bold">
-    <span className="text-amber-700">LA ARCHI</span>
-    
-    <span className="text-amber-700">TECTS</span>
-  </div>
-</div>
+          <div className="brand-wordmark text-lg md:text-xl font-bold">
+            <span className="text-amber-700">LA ARCHI</span>
 
+            <span className="text-amber-700">TECTS</span>
+          </div>
+        </div>
 
-     
         <div className="hidden md:flex items-center gap-8 text-sm font-medium">
           {links.map((link) => (
             <Link
@@ -56,7 +54,6 @@ function Navbar() {
           ))}
         </div>
 
-        
         <a
           href="tel:+916384284600"
           className="hidden md:inline-block text-sm font-medium bg-[#A05A49] px-4 py-2 rounded-full text-white hover:bg-amber-600 transition"
@@ -72,7 +69,6 @@ function Navbar() {
         </button>
       </nav>
 
-   
       <div
         className={`fixed top-0 right-0 bottom-0 w-64 bg-white/95 backdrop-blur-md shadow-lg transform transition-transform duration-300 ease-in-out z-50 md:hidden ${
           mobileOpen ? "translate-x-0" : "translate-x-full"
@@ -111,7 +107,6 @@ function Navbar() {
         </div>
       </div>
 
-    
       {mobileOpen && (
         <div
           className="fixed inset-0 bg-black/30 z-40 md:hidden"

@@ -16,6 +16,13 @@ interface AppointmentFormProps {
   meetingTypes: string[];
 }
 
+// Shared so every field — inputs and selects alike — gets the same visible
+// border, background, and focus treatment instead of relying on glass-input
+// alone (which wasn't rendering a visible edge).
+const fieldClass =
+  "glass-input !border-2 !border-amber-800/40 !bg-white/50 !rounded-xl !px-4 !py-3 " +
+  "focus:!outline-none focus:!border-amber-700 focus:!ring-2 focus:!ring-amber-700/15 " +
+  "transition-colors duration-200";
 
 const AppointmentForm: React.FC<AppointmentFormProps> = ({
   timeSlots,
@@ -40,46 +47,42 @@ const AppointmentForm: React.FC<AppointmentFormProps> = ({
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  setLoading(true);
-const API="https://architect-website-backend.onrender.com/api/contact";
-//const API="http://localhost:5000/api/contact";
-  try {
-    const res = await fetch(
-      API,
-      {
+    e.preventDefault();
+    setLoading(true);
+    const API = "https://architect-website-backend.onrender.com/api/contact";
+    //const API="http://localhost:5000/api/contact";
+    try {
+      const res = await fetch(API, {
         method: "POST",
-        mode: "cors",              
-        credentials: "omit",       
+        mode: "cors",
+        credentials: "omit",
         headers: {
           "Content-Type": "application/json",
-          "Accept": "application/json",
+          Accept: "application/json",
         },
         body: JSON.stringify(formData),
+      });
+
+      if (!res.ok) {
+        const text = await res.text();
+        console.error("Server error:", text);
+        throw new Error("Request failed");
       }
-    );
 
-    if (!res.ok) {
-      const text = await res.text();
-      console.error("Server error:", text);
-      throw new Error("Request failed");
+      setSubmitted(true);
+    } catch (err) {
+      console.error(err);
+      alert("Unable to submit. Please try again later.");
+    } finally {
+      setLoading(false);
     }
-
-    setSubmitted(true);
-  } catch (err) {
-    console.error(err);
-    alert("Unable to submit. Please try again later.");
-  } finally {
-    setLoading(false);
-  }
-};
+  };
 
   return (
     <motion.div
       {...scaleIn}
-      className="max-w-4xl mx-auto bg-gray-100 rounded-3xl border border-gray-300 p-12"
+      className="max-w-4xl mx-auto bg-white-100 rounded-3xl border border-gray-300 p-12"
     >
-     
       <div className="text-center mb-12">
         <h2 className="text-3xl font-light text-amber-900 tracking-tight">
           Book an Appointment
@@ -106,7 +109,7 @@ const API="https://architect-website-backend.onrender.com/api/contact";
             value={formData.name}
             onChange={handleChange}
             placeholder="Full Name"
-            className="glass-input"
+            className={fieldClass}
           />
 
           <input
@@ -116,7 +119,7 @@ const API="https://architect-website-backend.onrender.com/api/contact";
             value={formData.email}
             onChange={handleChange}
             placeholder="Email Address"
-            className="glass-input"
+            className={fieldClass}
           />
 
           <input
@@ -126,7 +129,7 @@ const API="https://architect-website-backend.onrender.com/api/contact";
             value={formData.phone}
             onChange={handleChange}
             placeholder="Phone / WhatsApp Number"
-            className="glass-input"
+            className={fieldClass}
           />
 
           <input
@@ -138,7 +141,7 @@ const API="https://architect-website-backend.onrender.com/api/contact";
             placeholder="mm/dd/yyyy"
             inputMode="numeric"
             autoComplete="off"
-            className="glass-input"
+            className={fieldClass}
           />
 
           <select
@@ -146,7 +149,7 @@ const API="https://architect-website-backend.onrender.com/api/contact";
             name="timeSlot"
             value={formData.timeSlot}
             onChange={handleChange}
-            className="glass-input glass-select"
+            className={`glass-select ${fieldClass}`}
           >
             <option value="" disabled>
               Preferred Time Slot
@@ -161,7 +164,7 @@ const API="https://architect-website-backend.onrender.com/api/contact";
             name="meetingType"
             value={formData.meetingType}
             onChange={handleChange}
-            className="glass-input glass-select"
+            className={`glass-select ${fieldClass}`}
           >
             <option value="" disabled>
               Preferred Meeting Type

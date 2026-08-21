@@ -19,8 +19,8 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = ({
     <motion.div
       {...fadeUp}
       transition={{ ...fadeUp.transition, delay: index * 0.1 }}
-      className=" bg-white/30 rounded-2xl px-6 py-4 text-center
-                 border border-white/80
+      className=" bg-gray-200/30 rounded-2xl px-6 py-4 text-center
+                 border border-gray-300
                  hover:translate-y-0.5 transition-all duration-300"
     >
       {Icon && (

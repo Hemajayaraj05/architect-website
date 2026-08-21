@@ -63,7 +63,7 @@ const ContactUs: React.FC = () => {
         ]}
       />
 
-      <section id="connect" className="relative bg-gray-200 py-28 overflow-hidden">
+      <section id="connect" className="relative from-stone-50 to-stone-100 py-28 overflow-hidden">
         <GlassStyles />
 
         <div className="max-w-6xl mx-auto px-6">
